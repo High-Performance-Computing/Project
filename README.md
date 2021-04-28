@@ -36,9 +36,9 @@ Next, we use a pruning algorithm to find effective subnetworks with a much lower
 For a complete list of instructions on how to use the programs found in this repository, please see [How To Run]() on the project website. I THINK IT WOULD BE NICE TO DO SOMETHING LIKE THIS TO.
 
 ## Table of Contents
-<!-- 1. [Problem Statement](/Writeup/ProblemStatement.md)
-2. [Solution](/Writeup/Solution.md)
-3. [Model and Data](/Writeup/ModelAndData.md)
+1. [Problem Statement](ProblemStatement.md)
+2. [Solution](Solution.md)
+<!-- 3. [Model and Data](/Writeup/ModelAndData.md)
 4. [Specs](/Writeup/Specs.md)
 5. [How To Run](/Writeup/HowToRun.md)
 6. [BFS](/Writeup/BFS.md)
