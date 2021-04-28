@@ -1,3 +1,3 @@
 # Project
 
-## Can raph upload?
+## David Assaraf, Tale Lokvenec, Gael Ancel, Raphael Pellegrin
