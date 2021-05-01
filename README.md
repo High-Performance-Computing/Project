@@ -39,9 +39,10 @@ For the winning tickets to be effective, we need them to contain generic inducti
  
  
 The learning transfer is valid for:
-- **Same data distribution (we can for instance split CIFAR-10 half - CIFAR-10a and CIFAR-10b. A winning ticket found for CIFAR-10a work on CIFAR-10b).
-- **Different data distribution (CIFAR-100 and ImageNet winning tickets work sometimes better on CIFAR-10 than its actual winning ticket)
-→ In conclusion the bigger the dataset the more general the winning ticket we find
+- **Same data distribution** (we can for instance split CIFAR-10 half - CIFAR-10a and CIFAR-10b. A winning ticket found for CIFAR-10a work on CIFAR-10b).
+- **Different data distribution** (we can find a winning ticket for ImageNet winning and use it on CIFAR-10. Interestingly, an ImageNet ticket might work even better on CIFAR-10 than on ImageNet)
+
+**In general, the bigger the dataset the more general the winning ticket we find will be.**
 
 ## How to Use
 
