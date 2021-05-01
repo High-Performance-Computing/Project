@@ -35,9 +35,7 @@ Another - and possibly more prevalent - need for big compute are the two nested 
 
 ## Need for Big Data
 
-For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, it is not only for the specific dataset we are dealing with, but we do it broadly to get one winning ticket working for different datasets
-
-Our motivation is to avoid training and pruning our neural network everytime we change the settings of our problem.
+For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper [One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers](https://arxiv.org/abs/1906.02773) by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian.
  
 Consequently, when we train a neural network we do not train it only for the specific dataset we are dealing with but we do it broadly.
  
