@@ -6,11 +6,11 @@ David Assaraf, Tale Lokvenec, Gael Ancel, Raphael Pellegrin
 
 ## Overview: the Lottery Ticket Hypothesis (LTH)
 
-Our work will be based on the paper: [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635) by Jonathan Frankle and Michael Carbin. ADD LINK TO PAPER. The Lottery Ticket Hypothesis builds on the idea of Network Pruning. The idea “To reduce the extent [of a neural network] by removing superfluous or unwanted parts” ADD WHERE THE QUOTE IS FROM. Network pruning is used to reduce the storage costs and computational requirements.
+Our project is based on the paper: [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635) by Jonathan Frankle and Michael Carbin. The Lottery Ticket Hypothesis (LTH) builds on the notion of network pruning. The idea is to reduce the extent [of a neural network] by removing superfluous or unwanted parts. Network pruning is used to reduce the storage costs and computational requirements of dealing with the network.
 
 The basic idea of the LTH is the following. Initially, we begin with a Neural Network where each connection has been set to a random weight. We the train the Neural Network and remove the superfluous structure. Here, we focus on pruning weights: this is called sparse pruning. We look at the magnitude of the weights and we prune the weights with the lowest magnitude. We then reset the remaining weights to their initial value - or to their value at a given epoch - and we retrain the sparse subnetwork. It’s important to reset the weights to their original value or to a value they took during training and not to random values. 
 
-This is great because we arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
+We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
 
 We have two loops we parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.
 
