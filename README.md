@@ -10,24 +10,43 @@ Our project is based on the paper: [The Lottery Ticket Hypothesis: Finding Spars
 
 The basic idea of the LTH is the following. Initially, we begin with a Neural Network where each connection has been set to a random weight. We the train the Neural Network and remove the superfluous structure. Here, we focus on pruning weights: this is called sparse pruning. We look at the magnitude of the weights and we prune the weights with the lowest magnitude. We then reset the remaining weights to their initial value - or to their value at a given epoch - and we retrain the sparse subnetwork. It’s important to reset the weights to their original value or to a value they took during training and not to random values. 
 
+Once we have pruned the Neural Network, we have damaged the function that we have learnt. We thus perform some fine tuning (further training).
+
+
 We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
 
 We have two loops to parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.
 
 ## Need for Big Compute
 
-What is the need for big compute in our project?
-
 Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing.
 
-The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU.
+The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although MobileNet is lighter than most state of art CNN architectures, it is practically infeasible to train it on a single CPU.
 
 To investigate the Lottery Ticket Hypothesis, we use the MobileNetV2 architecture.
 
 - **Number of parameters**: 3.4M 
 - **Number of multiply-adds (MAdds) per forward pass**: 300M
 
-Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm will be iterating over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm will be iterating over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we will iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops we will use the Big Compute paradigms presented in class. 
+Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. 
+
+Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class.
+
+
+## Need for Big Data
+
+For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, it is not only for the specific dataset we are dealing with, but we do it broadly to get one winning ticket working for different datasets
+
+Our motivation is to avoid training and pruning our neural network everytime we change the settings of our problem.
+ 
+Consequently, when we train a neural network we do not train it only for the specific dataset we are dealing with but we do it broadly.
+ 
+The learning transfer is valid for:
+-   	Same data distribution ( when CIFAR-10 is split in half CIFAR-10a and CIFAR-10b,  a winning ticket in CIFAR-10a work on CIFAR-10b).
+-   	Different data distribution (CIFAR-100 and ImageNet winning tickets work sometimes better on CIFAR-10 than its actual winning ticket )
+ 
+→ In conclusion the bigger the dataset the more general the winning ticket we find
+
 
 ## How to Use
 
