@@ -12,12 +12,13 @@ The basic idea of the LTH is the following. Initially, we begin with a Neural Ne
 
 Once we have pruned the Neural Network, we have damaged the function that we have learnt. We thus perform some fine tuning (further training).
 
-
 We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
+
+There is a great talk by Jonathan Frankle at ICLR2019 that summarises these ideas: [J. Frankle & M. Carbin: The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://www.youtube.com/watch?v=s7DqRZVvRiQ&t=773s)
 
 We have two loops to parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.
 
-## Need for Big Compute
+## Overview: Need for Big Compute
 
 Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing.
 
@@ -33,7 +34,7 @@ Next, we use a pruning algorithm to find effective subnetworks with a much lower
 Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class.
 
 
-## Need for Big Data
+## Overview: Need for Big Data
 
 For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper [One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers](https://arxiv.org/abs/1906.02773) by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian.
  
@@ -43,6 +44,13 @@ The learning transfer is valid for:
 - **Different data distribution** (we can find a winning ticket for ImageNet winning and use it on CIFAR-10. Interestingly, an ImageNet ticket might work even better on CIFAR-10 than on ImageNet)
 
 **In general, the bigger the dataset the more general the winning ticket we find will be.**
+
+## Overview: the infrastructure we used
+
+
+On every node, wedo late resetting from several different epochs and use Python Multiprocessing. The different processes train on four GPU.
+
+In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs.
 
 ## How to Use
 
