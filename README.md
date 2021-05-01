@@ -12,13 +12,13 @@ The basic idea of the LTH is the following. Initially, we begin with a Neural Ne
 
 We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
 
-We have two loops we parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.
+We have two loops to parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.
 
 ## Need for Big Compute
 
 What is the need for big compute in our project?
 
-Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow us for more efficient algorithm prototyping and testing.
+Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing.
 
 The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU.
 
@@ -28,8 +28,6 @@ To investigate the Lottery Ticket Hypothesis, we use the MobileNetV2 architectur
 - **Number of multiply-adds (MAdds) per forward pass**: 300M
 
 Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm will be iterating over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm will be iterating over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we will iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops we will use the Big Compute paradigms presented in class. 
-
-
 
 ## How to Use
 
