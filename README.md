@@ -10,6 +10,8 @@ Our project is based on the paper: [The Lottery Ticket Hypothesis: Finding Spars
 
 The basic idea of the LTH is the following. Initially, we begin with a Neural Network where each connection has been set to a random weight. We the train the Neural Network and remove the superfluous structure. Here, we focus on pruning weights: this is called sparse pruning. We look at the magnitude of the weights and we prune the weights with the lowest magnitude. We then reset the remaining weights to their initial value - or to their value at a given epoch - and we retrain the sparse subnetwork. It’s important to reset the weights to their original value or to a value they took during training and not to random values. 
 
+![](Pruning.png)
+
 Once we have pruned the Neural Network, we have damaged the function that we have learnt. We thus perform some fine tuning (further training).
 
 We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
