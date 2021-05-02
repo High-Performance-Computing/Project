@@ -39,10 +39,20 @@ Objective: End solution comprises 20 worker nodes, each one will have 4 GPUs TES
 
 ## Profiling and training MobilenetV2
 
+
+Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overhead between CPU and GPU. 
+
+But the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low.
+
+We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect a 1X to 2X speed-up by further augmenting GPU occupation.
+
+### Summary
+
 - Running on a single CPU: 20hrs/epoch
 - Running on a single Tesla K80 GPU: 3h30/epoch
 - Running on 4 Tesla K80 GPUs: 1h/epoch
 - Identifying the bottleneck: slow data pipeline
+
 
 
 ## Main Overheads
