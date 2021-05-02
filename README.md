@@ -1,4 +1,4 @@
-# CS 205 Final Project: The Lottery Ticket Hypothesis (LTH) on FAS RC
+# CS 205 Final Project: The Lottery Ticket Hypothesis (LTH) on the Faculty of Arts and Sciences Research Computing (FAS RC)
 
 ## Spring 2021
 
