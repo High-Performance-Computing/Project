@@ -17,7 +17,7 @@ David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin
 
 <p align="justify"> We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. </p>
 
-<p align="justify"> There is a great talk by Jonathan Frankle at ICLR2019 that summarises these ideas: [J. Frankle & M. Carbin: The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://www.youtube.com/watch?v=s7DqRZVvRiQ&t=773s) </p>
+<p align="justify"> There is a great talk by Jonathan Frankle at ICLR2019 that summarises these ideas: [J. Frankle & M. Carbin: The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://www.youtube.com/watch?v=s7DqRZVvRiQ&t=773s).  </p>
 
 <p align="justify"> We have two loops to parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.  </p>
 
