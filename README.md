@@ -60,5 +60,6 @@ For a complete list of instructions on how to use the programs found in this rep
 1. [Problem Statement](ProblemStatement.md)
 2. [Solution](Solution.md)
 3. [Model and Data](ModelAndData.md)
-4. [How To Run](HowToRun.md)
-5. [Discussion](Discussion.md)
+4. [MobileNet](MobileNetArchitecture.md)
+5. [How To Run](HowToRun.md)
+6. [Discussion](Discussion.md)
