@@ -6,7 +6,7 @@ David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin
 
 ## Overview: the Lottery Ticket Hypothesis (LTH)
 
-<p align="center"> Our project is based on the paper: [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635) by Jonathan Frankle and Michael Carbin. The Lottery Ticket Hypothesis (LTH) builds on the notion of network pruning. The idea is to reduce the extent [of a neural network] by removing superfluous or unwanted parts. Network pruning is used to reduce the storage costs and computational requirements of dealing with the network. </p>
+<p align="justify"> Our project is based on the paper: [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635) by Jonathan Frankle and Michael Carbin. The Lottery Ticket Hypothesis (LTH) builds on the notion of network pruning. The idea is to reduce the extent [of a neural network] by removing superfluous or unwanted parts. Network pruning is used to reduce the storage costs and computational requirements of dealing with the network. </p>
 
 The basic idea of the LTH is the following. Initially, we begin with a Neural Network where each connection has been set to a random weight. We the train the Neural Network and remove the superfluous structure. Here, we focus on pruning weights: this is called sparse pruning. We look at the magnitude of the weights and we prune the weights with the lowest magnitude. We then reset the remaining weights to their initial value - or to their value at a given epoch - and we retrain the sparse subnetwork. It’s important to reset the weights to their original value or to a value they took during training and not to random values. 
 
