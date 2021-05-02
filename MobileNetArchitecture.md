@@ -10,7 +10,7 @@ The key idea behind MobileNets are depthwise separable convolutions.
 
 ![](RegularConvolution.png)
 
-In a regular convolution, we apply a filter a h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x  DK by DK by M filter. So we look for relationships within each channel (DK by DK) and between channels. 
+In a regular convolution, we apply a filter a h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x  D<sub>K</sub>sub> by DK by M filter. So we look for relationships within each channel (DK by DK) and between channels. 
 
 The goal of depthwise seprable convolutions is to break down this process into two parts: first, we look for relationships within each channel, and then between different channels. This is illustrated below in figures b) and c). We first take DK by DK filters and apply them one each to a channel. We thus have M such filers, called depthwise convolutions. In image c), we can see the pointwise convolutions: those are 1 by 1 by M convolutions. 
 
