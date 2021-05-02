@@ -8,6 +8,10 @@ We first examine the paper [MobileNets: Efficient Convolutional Neural Networks 
  
 The key idea behind MobileNets are depthwise separable convolutions.
 
+![](RegularConvolution.png)
+
+In a regular convolution, we apply a filter a $D_K$ into $D_K$ into $M$ filter. 
+
 ![](Mobilenet.png)
 
 

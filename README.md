@@ -66,3 +66,4 @@ For a complete list of instructions on how to use the programs found in this rep
 4. [MobileNet](MobileNetArchitecture.md)
 5. [How To Run](HowToRun.md)
 6. [Discussion](Discussion.md)
+7. [Replicability](Replicability.md)
