@@ -32,14 +32,14 @@ David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin
 - **Number of parameters**: 3.4M 
 - **Number of multiply-adds (MAdds) per forward pass**: 300M
 
-Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. 
+<p align="justify"> Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. </p>
 
-Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class.
+<p align="justify"> Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class. </p>
 
 
 ## Overview: Need for Big Data
 
-For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper [One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers](https://arxiv.org/abs/1906.02773) by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian.
+<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper [One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers](https://arxiv.org/abs/1906.02773) by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. </p>
  
  
 The learning transfer is valid for:
@@ -51,13 +51,13 @@ The learning transfer is valid for:
 ## Overview: the infrastructure we used
 
 
-On every node, wedo late resetting from several different epochs and use Python Multiprocessing. The different processes train on four GPU.
+<p align="justify"> On every node, wedo late resetting from several different epochs and use Python Multiprocessing. The different processes train on four GPU. </p>
 
-In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs.
+<p align="justify"> In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs. </p>
 
 ## How to Use
 
-For a complete list of instructions on how to use the programs found in this repository, please see [How To Run]() on the project website. I THINK IT WOULD BE NICE TO DO SOMETHING LIKE THIS TO.
+<p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see [How To Run]() on the project website. I THINK IT WOULD BE NICE TO DO SOMETHING LIKE THIS TO. </p>
 
 ## Table of Contents
 1. [Problem Statement](ProblemStatement.md)
