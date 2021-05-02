@@ -45,6 +45,25 @@ Objective: End solution comprises 20 worker nodes, each one will have 4 GPUs TES
 - Identifying the bottleneck: slow data pipeline
 
 
+## Main Overheads
+
+### Communication: 
+
+Performance of GPU applications can be bottlenecked by data transfers between the CPU nodes and GPU. It limits the peak throughput that can be obtained from these memory spaces
+Solution: Caching & Prefetching in order to accelerate data transfers between CPU & GPU
+
+### Data processing: 
+
+The CPU takes some time to feed the data to the GPU. 
+Solution: Parallelization of the data pipeline using 144 different workers
+Solution: Vectorization of the pipeline function using Batching 
+After parallelization of the data pipeline, down to 15 mins/epoch 
+Next step to reach 100% GPU occupation: Offline processing of the data using Spark
+
+Synchronization: We structured our architecture in order for different nodes to be independent
+
+
+
 
 
 ## Structure from last year group
