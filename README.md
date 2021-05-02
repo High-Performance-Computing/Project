@@ -12,6 +12,9 @@ The basic idea of the LTH is the following. Initially, we begin with a Neural Ne
 
 ![](Pruning.png)
 
+<img src="https://github.com/High-Performance-Computing/Project/blob/main/Pruning.pngg" width="200" height="200" />
+
+
 Once we have pruned the Neural Network, we have damaged the function that we have learnt. We thus perform some fine tuning (further training).
 
 We then arrive at networks that are 15% to 1% of their original size. Those sub-networks require fewer iterations to learn and they match the accuracy of the original network. 
