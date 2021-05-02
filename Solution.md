@@ -32,6 +32,7 @@ ImageNet Dataset:
 We use FAS RC (take advantage of the SCRATCH space [300+GB] and the ease of allocating several nodes for MPI). 
 
 Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1
+
 We used Spark to download the data [working closely with FAS in order to devise the right SLURM allocations for the different workers to access the GPUs safely]
 We use MPI for communication between our nodes and Python Multiprocessing for parallelization within a node 
 Train using TensorFlow 2.0 (leveraging cuda and cudnn) and Elephas (PySpark module) in order to accelerate batch training 
@@ -40,11 +41,11 @@ Objective: End solution comprises 20 worker nodes, each one will have 4 GPUs TES
 ## Profiling and training MobilenetV2
 
 
-Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overhead between CPU and GPU. 
+<p align="justify"> Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overhead between CPU and GPU. </p> 
 
-But the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low.
+<p align="justify"> But the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low. </p>
 
-We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect a 1X to 2X speed-up by further augmenting GPU occupation.
+<p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect a 1X to 2X speed-up by further augmenting GPU occupation. </p>
 
 ### Summary
 
@@ -59,18 +60,23 @@ We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%)
 
 ### Communication: 
 
-Performance of GPU applications can be bottlenecked by data transfers between the CPU nodes and GPU. It limits the peak throughput that can be obtained from these memory spaces
-Solution: Caching & Prefetching in order to accelerate data transfers between CPU & GPU
+- Performance of GPU applications can be bottlenecked by data transfers between the CPU nodes and GPU. It limits the peak throughput that can be obtained from these memory spaces
+- **Solution:** Caching & Prefetching in order to accelerate data transfers between CPU & GPU
 
 ### Data processing: 
 
-The CPU takes some time to feed the data to the GPU. 
-Solution: Parallelization of the data pipeline using 144 different workers
-Solution: Vectorization of the pipeline function using Batching 
+- The CPU takes some time to feed the data to the GPU. 
+- **Solution:** Parallelization of the data pipeline using 144 different workers
+- **Solution:** Vectorization of the pipeline function using Batching
+ 
 After parallelization of the data pipeline, down to 15 mins/epoch 
 Next step to reach 100% GPU occupation: Offline processing of the data using Spark
 
 Synchronization: We structured our architecture in order for different nodes to be independent
+
+##### FAS RC
+
+We used 20 nodes with 4 GPUs per node on FAS RC.
 
 
 
@@ -84,16 +90,9 @@ Synchronization: We structured our architecture in order for different nodes to 
 
 ### Levels of Parallelism
 
-
 ### Types of Parallelism within Application
-
-The focus is data parallelism as computations on different parts of the graph will be running in parallel. For example, in PageRank, the adjacency matrix representation of the graph is evenly divided row-wise across all processors. Each processor then performs multiplication between the transition probability matrix its rows of the adjacency matrix. 
 
 ### Programming Models
 
-
 ### Infrastructure
 
-##### FAS RC
-
-We used 20 nodes with 4 GPUs per node on FAS RC.
