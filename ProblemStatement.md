@@ -4,21 +4,28 @@
 
 The numerical complexity of doing late-resetting and masking is O(MNt). 
 
-- M is the number of thresholds for our masks 
-- N is the length of the trellis for late resetting 
+- M is the number of thresholds for our masks (each mask gives us one subnetwork)
+- N is the length of the trellis for late resetting  
 - t is the average time to train a network (we will actually use 
-sparse subnetworks, so they will train faster than the original one)
+sparse subnetworks, so they will train faster than the original one).
 
-## Theoretical Speed up & expected scalability: no worker parallelization
+### Theoretical Speed up & expected scalability: no worker parallelization
 
-The numerical complexity of doing late-resetting and masking is O(MNt) = O(100t).
+In our case, the numerical complexity of doing late-resetting and masking is O(100t).
 
-- M is the number of thresholds for our masks. We take M = 20. We will have 20 sparse subnetworks
-- N is the length of the trellis for late resetting. We take N = 5. We do 5 resetting of the weights
-- t is the average time to train a network (we will actually use sparse subnetworks, so they will train faster than the original one). We estimate this at 26 h 15 min 
+- We take M = 20. We will have 20 sparse subnetworks.
+- We take N = 5. We do 5 resetting of the weights
+- t is the average time to train a network (we will actually use sparse subnetworks, so they will train faster than the original one). We estimate this at 26 h 15 min without worker parallelization. 
 
-Expected time in order to run all sparser substructures from the different epochs: 
-2625 hours.
+Thus, the expected time in order to run all the sparser substructures from the different epochs is 
+2625 hours without worker parallelization.
+
+
+## Theoretical speed-up and scalability expected
+
+
+Each worker needs to do several late resetting for the particular structure found after masking. Afterwards, there is no communication between the worker nodes. The communication time at the beginning is negligible compared to training time. The computation time per epoch is 4.5 minutes at best. We have 350 epochs, and perform 5 late resetting. Thus we achieve a run time of 131 h 15 min at best per worker node. This corresponds to a speed up of 20. 
+
 
 
 
