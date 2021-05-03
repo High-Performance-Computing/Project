@@ -17,6 +17,6 @@
 
 ![](Mobilenet.png)
 
-<p align="justify"> The cost of a regular convolution is  D<sub>K</sub>  D<sub>K</sub>. </p>
+<p align="justify"> The cost of a regular convolution is  D<sub>K</sub>  D<sub>K</sub> M. If we do N such convolutions, the cost is D<sub>K</sub>  D<sub>K</sub> M N. </p>
 
 
