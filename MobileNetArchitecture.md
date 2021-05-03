@@ -30,21 +30,25 @@ The ratio betwee the cost of a depthwise separable convolution and a classical c
 
 Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
 
-Standarc onvolution:
+**Standard onvolution:**
 
 ![](StandardConv.png)
 
-Depthwise Convolution:
+**Depthwise Convolution:**
 
 ![](DepthwiseConvolution.png)
 
-Pointwise Convolution:
+**Pointwise Convolution:**
 
 ![](PointwiseConvolution.png)
 
 Source of the images: 
 - https://machinethink.net/blog/googles-mobile-net-architecture-on-iphone/
 - https://arxiv.org/abs/1704.04861
+
+## MobileNetV2
+
+To finish
 
 
 
