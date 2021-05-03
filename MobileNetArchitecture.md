@@ -8,6 +8,8 @@
  
 <p align="justify"> The key idea behind MobileNets are depthwise separable convolutions. </p>
 
+<p align="justify">  First, here is an image for a standard convolution. </p>
+
 ![](RegularConvolution.png)
 
 
@@ -28,8 +30,16 @@ The ratio betwee the cost of a depthwise separable convolution and a classical c
 
 Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
 
+Standarc onvolution:
+
 ![](StandardConv.png)
+
+Depthwise Convolution:
+
 ![](DepthwiseConvolution.png)
+
+Pointwise Convolution:
+
 ![](PointwiseConvolution.png)
 
 Source of the images: 
