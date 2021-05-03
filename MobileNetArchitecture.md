@@ -10,6 +10,7 @@
 
 ![](RegularConvolution.png)
 
+
 <p align="justify"> In a regular convolution, we apply a filter a D<sub>K</sub> by D<sub>K</sub> by M filter. So we look for relationships within each channel (D<sub>K</sub> by D<sub>K</sub>) and between channels. </p>
 
 <p align="justify"> The goal of depthwise seprable convolutions is to break down this process into two parts: first, we look for relationships within each channel, and then between different channels. This is illustrated below in figures b) and c). We first take D<sub>K</sub> by D<sub>K</sub> filters and apply them one each to a channel. We thus have M such filers, called depthwise convolutions. In image c), we can see the pointwise convolutions: those are 1 by 1 by M convolutions. </p>
@@ -24,5 +25,17 @@
 <p align="justify"> Thus the total depthwise convolutions cost is D<sub>K</sub> D<sub>K</sub> M D<sub>F</sub> D<sub>F</sub>+ M N D<sub>F</sub> D<sub>F</sub>. </p>
 
 The ratio betwee the cost of a depthwise separable convolution and a classical convolution is thus (1/N)+(1/(D<sub>K</sub> D<sub>K</sub>)).
+
+Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
+
+![](StandardConv.png)
+![](DepthwiseConvolution.png)
+![](PointwiseConvolution.png)
+
+Source of the images: 
+- https://machinethink.net/blog/googles-mobile-net-architecture-on-iphone/
+- https://arxiv.org/abs/1704.04861
+
+
 
 
