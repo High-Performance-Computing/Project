@@ -28,7 +28,7 @@
 
 The ratio between the cost of a depthwise separable convolution and a classical convolution is thus (1/N)+(1/(D<sub>K</sub> D<sub>K</sub>)).
 
-We can add a width multiplyier. We introduce a parameter %alpha. The cost become D<sub>K</sub> D<sub>K</sub> %alpha M D<sub>F</sub> D<sub>F</sub>+ %alpha M%  %alpha N D<sub>F</sub> D<sub>F</sub>
+We can add a width multiplyier. We introduce a parameter \alpha. The cost become D<sub>K</sub> D<sub>K</sub> %alpha M D<sub>F</sub> D<sub>F</sub>+ %alpha M%  %alpha N D<sub>F</sub> D<sub>F</sub>
 
 Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
 
