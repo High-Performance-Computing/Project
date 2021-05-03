@@ -17,6 +17,6 @@
 
 ![](Mobilenet.png)
 
-<p align="justify"> The cost of a regular convolution is DK DK. </p>
+<p align="justify"> The cost of a regular convolution is  D<sub>K</sub>  D<sub>K</sub>. </p>
 
 
