@@ -19,4 +19,6 @@
 
 <p align="justify"> The cost of a regular convolution is  D<sub>K</sub>  D<sub>K</sub> M. If we do N such convolutions, the cost is D<sub>K</sub>  D<sub>K</sub> M N. Finally, if we apply this to our block of size D<sub>F</sub> by   D<sub>F</sub>, with stride one, we get a cost of D<sub>K</sub>  D<sub>K</sub> M N  D<sub>F</sub>  D<sub>F</sub>. </p>
 
+<p align="justify"> For depthwise separable convolutions, we first consider the cost of the depthwise convolutions. The cost of one such convolution is D<sub>K</sub> D<sub>K</sub>. We do M such convolution (see b)) and using a stride one. The cost is then D<sub>K</sub> D<sub>K</sub> M D<sub>F</sub> D<sub>F</sub>. </p>
+
 
