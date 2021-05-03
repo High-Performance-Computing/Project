@@ -23,4 +23,6 @@
 
 <p align="justify"> Thus the total depthwise convolutions cost is D<sub>K</sub> D<sub>K</sub> M D<sub>F</sub> D<sub>F</sub>+ M N D<sub>F</sub> D<sub>F</sub>. </p>
 
+The ratio betwee the cost of a depthwise separable convolution and a classical convolution is thus (1/N)+(1/(D<sub>K</sub> D<sub>F</sub>)).
+
 
