@@ -53,6 +53,14 @@ Source of the images:
 The first architecture was updated with <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a> by Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen. The network design is based on MobileNetV1 and significantly improves its accuracy. The main contribution of MobileNetV2 is a novel layer module: **the
 inverted residual with linear bottleneck**.
 
+![](Regular_Convolution.png)
+
+![](Separable_Convolution.png)
+
+![](BottleNeckConvolution.png)
+
+![](ExpansionConvolutionBlock.png)
+
 ### MobileNetV3
 
 Note that there are even more recent models by Google (for instance <a href="https://arxiv.org/abs/1905.02244">Searching for MobileNetV3</a> by Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam).
