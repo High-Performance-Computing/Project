@@ -32,24 +32,11 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 <p align="justify">  The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although MobileNet is lighter than most state of art CNN architectures, it is practically infeasible to train it on a single CPU. </p>
 
-<p align="justify">  To investigate the Lottery Ticket Hypothesis, we use the MobileNetV2 architecture. </p>
-
-- **Number of parameters**: 3.4M 
 - **Number of multiply-adds (MAdds) per forward pass**: 300M
 
-<p align="justify"> Next, we use a pruning algorithm to find effective subnetworks with a much lower parameters count. </p>
+We train using 4 GPUs.
 
-<p align="justify"> Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the Lottery Ticket Hypothesis, we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture per each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class. </p>
-
-
-Several levels of computation: training a big neural network end to end, iterate over different thresholds for the mask and then iterate over the different checkpoints in training. 
-
-First level of computation: could leverage a big CNN + train it on the ImageNet dataset using the GPU. In the same time, leverage a smaller CNN that can be run on the CPU, on the ImageNet dataset. Compare the number of operations that need to be performed for every network during one epoch and compare the performances of both (why ? can’t run this big architecture on the CPU). The big CNN to be used = MobileNet because it is lightweight and will run fast in the CPU/GPU
-
-Second level of computation: parallelization of the two loops. The first loop is a loop over the threshold. We could use MPI in order to leverage several workers for this task. We could then compare the time spent of the global vs what would be expected for a serial code. Using MPI, we also need to transfer the value of the weights at the different checkpoints in training during the initial training of the big CNN (could be done in factory-style pipeline to make it more efficient, i.e. when evaluating one resetting set, load in the next one)
-
-Third level of computation: For every one of the different cores, we now analyze what is the procedure with one threshold t (one core has different thresholds and is going to iterate over those). For every threshold, we need to restart from different epochs in training and train the sparsified architecture for N - n epochs (where n is the epoch checkpoint): need to restart training from different epochs and could leverage multiprocessing in Python (the only result that we need to write is the final test/train accuracy and write the weights somewhere). In order to assess the need for big compute, we could once again compare the time with/without parallelization
-
+<p align="justify"> Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). We decided to use a SLURM file for this purpose instead of MPI. In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the appropriate Lottery Ticket , we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture for each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class and we leverage multiprocessing in Python. The only results that we need to save are the final test/train accuracy and the weights somewhere. In order to assess the need for big compute, we compare the time needed with and without parallelization.</p>
 
 
 ## Overview: Need for Big Data
