@@ -21,6 +21,8 @@ David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin
 
 <p align="justify"> We have two loops to parallelize: we first need to study different possible thresholds for our masks (a bigger threshold means that we throw away more weights). We also need to decide on the epoch N which we will use as our baseline when we reset the weights of our subnetwork.  </p>
 
+Note that it is also possible to do the pruning procedure iteratively: this is called Iterative Magnitude Pruning in the paper. 
+
 ## Overview: Need for Big Compute
 
 <p align="justify">  Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing. </p>
