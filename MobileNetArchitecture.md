@@ -58,8 +58,8 @@ Here is the illustrations for standard convolutions and depthwise separable conv
 
 ![](Separable_Convolution.png)
 
-The concepts of bottleneck convolutions and expansion convolutions are illustrated below. The diagonally hatched block do not contain
-non-linearities. The lightly colored block indicates the beginning of the next block. 
+<p align="justify"> The concepts of bottleneck convolutions and expansion convolutions are illustrated below. The diagonally hatched block do not contain
+non-linearities. The lightly colored block indicates the beginning of the next block. </p>
 
 ![](BottleNeckConvolution.png)
 
