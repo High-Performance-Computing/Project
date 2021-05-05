@@ -50,7 +50,7 @@ Source of the images:
 
 ## MobileNetV2
 
-<p align="justify"> The first architecture was updated with <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a> by Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen. The network design is based on MobileNetV1 and significantly improves its accuracy. The main contribution of MobileNetV2 is a novel layer module: **the inverted residual with linear bottleneck**. </p>
+<p align="justify"> The first architecture was updated with <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a> by Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen. The network design is based on MobileNetV1 and significantly improves its accuracy. The main contribution of MobileNetV2 is a novel layer module: the inverted residual with linear bottleneck. </p>
 
 Here is the illustrations for standard convolutions and depthwise separable convolutions used in the paper:
 
@@ -58,9 +58,8 @@ Here is the illustrations for standard convolutions and depthwise separable conv
 
 ![](Separable_Convolution.png)
 
-diagonally hatched texture indicates layers that do not contain
-non-linearities. The last (lightly colored) layer indicates the
-beginning of the next block. 
+The concepts of bottleneck convolutions and expansion convolutions are illustrated below. The diagonally hatched block do not contain
+non-linearities. The lightly colored block indicates the beginning of the next block. 
 
 ![](BottleNeckConvolution.png)
 
