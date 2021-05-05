@@ -2,7 +2,7 @@
 
 ## Spring 2021
 
-David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin
+David Assaraf, Tale Lokvenec, Gaël Ancel, Raphaël Pellegrin [link](https://www.google.com/)
 
 ## Overview: the Lottery Ticket Hypothesis (LTH)
 
