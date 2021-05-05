@@ -32,7 +32,7 @@ We can add a width multiplyier. We introduce a parameter &alpha;. The cost becom
 
 Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
 
-**Standard onvolution:**
+**Standard convolution:**
 
 ![](StandardConv.png)
 
