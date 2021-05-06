@@ -80,14 +80,56 @@ We used 20 nodes with 4 GPUs per node on FAS RC.
 ## Training
 
 - We save the weights at initialization. 
-- We save the weights at the final step of training
-- We define a grid on the epochs for which we want to perform late resetting and save the weights during the training at every one of these epochs
+- We save the weights at the final step of training.
+- We define a grid on the epochs for which we want to perform late resetting and save the weights during the training at every one of these epochs.
 
-Once this is done, ie we have initial weights + final weights + weights at the treillis of epochs, we can start IMP:
-Define a grid of thresholds on the magnitude of the final weights
-Compute the mask for every one of these thresholds [1 for loop]
-For every masked network, retrain from every selected epoch [1 for loop]
-These two for loops are where the parallelization occurs: this is where we will hopefully leverage MPI/OpenMP/Python multiprocessing. 
+<p align="justify"> Once this is done, ie we have the initial & final values of the weights, as well as the values of the weights at the treillis of epochs, we can start IMP, we:
+- Define a grid of thresholds on the magnitude of the final weights
+- Compute the mask for every one of these thresholds -> one loop
+- For every masked network, retrain from every selected epoch (on a single node) -> 1 loop
+- 
+These two for loops are where the parallelization occurs.
+ 
+ #### Weights exploration
+ 
+We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
+
+- The minimum weight norm is 0.0
+- The mean weight norm is 0.14019392
+- The 10 quantile is 0.0
+- The 20 quantile is 0.0
+- The 25 quantile is 4.926305977731582e-11
+- The 30 quantile is 9.865087746696588e-10
+- The 40 quantile is 0.007594366930425178
+- The 50 quantile is 0.02179508749395609
+- The 60 quantile is 0.03776561319828032
+- The 65 quantile is 0.046586392819881445
+- The 70 quantile is 0.056343686953186985
+- The 75 quantile is 0.06743156351149082
+- The 80 quantile is 0.08066952377557755
+- The 81 quantile is 0.08369872085750103
+- The 82 quantile is 0.08687067791819574
+- The 83 quantile is 0.09022066660225392
+- The 84 quantile is 0.0937917947769165
+- The 85 quantile is 0.0976430837064981
+- The 86 quantile is 0.10182715475559234
+- The 87 quantile is 0.10635840006172656
+- The 88 quantile is 0.11139745563268663
+- The 89 quantile is 0.1169594067335129
+- The 90 quantile is 0.1232308015227318
+- The 91 quantile is 0.13055326133966447
+- The 92 quantile is 0.13914283633232122
+- The 93 quantile is 0.14968018367886543
+- The 94 quantile is 0.163216772377491
+- The 95 quantile is 0.18187121450901
+- The 96 quantile is 0.2115161424875247
+- The 97 quantile is 0.27592926561832376
+- The 98 quantile is 0.6517226707935329
+- The 99 quantile is 2.9455150127410867
+
+For example, if we choose a threshold of 2.9455150127410867, our mask will mask all the weights whose norm is lower than 2.9455150127410867. Thus we will be left with a network that has only one percent of the original size.
+
+We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster.
 
 
 
