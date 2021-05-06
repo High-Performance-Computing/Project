@@ -101,6 +101,7 @@ These two for loops are where the parallelization occurs.
 We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
 
 - The minimum weight norm is 0.0
+- The maximum weight norm is 2226.8171
 - The mean weight norm is 0.14019392
 - The 10 quantile is 0.0
 - The 20 quantile is 0.0
