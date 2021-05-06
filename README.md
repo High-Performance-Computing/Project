@@ -56,6 +56,8 @@ The learning transfer is valid for:
 
 ### The dataset we use
 
+The dataset we are going to leverage is ImageNet, which is composed of ~14M training images, 50k images for validation and 100k images for testing. Something very special about ImageNet is that the image resolution is very high: 227*227*3 pixels per image. Since one pixel is occupying 8 bit in the memory, one image is ~0.3Mo in memory, so the entire dataset is ~1+To, this is definitely a Big Data problem and we will need to leverage Spark/MarReduce in order to deal with this amount of data.
+
 ## Overview: the infrastructure we used
 
 
