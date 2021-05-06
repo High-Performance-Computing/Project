@@ -34,10 +34,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 - **Number of multiply-adds (MAdds) per forward pass**: 300M
 
-We train using 4 GPUs.
-
 <p align="justify"> Another - and possibly more prevalent - need for big compute are the two nested for loops present in the pruning algorithm. In the outer loop, the algorithm iterates over the different masks (produced by the different pruning thresholds). We decided to use a SLURM file for this purpose instead of MPI. In the inner loop, the algorithm iterates over the range of possible epochs which we will use as our baseline when we reset the subnetwork weights. In order to find the appropriate Lottery Ticket , we iterate over the grid of threshold values and late resetting epochs and train a sparse version of the MobileNet architecture for each inner loop iteration. In order to parallelize the nested for loops, we use the Big Compute paradigms presented in class and we leverage multiprocessing in Python. The only results that we need to save are the final test/train accuracy and the weights somewhere. In order to assess the need for big compute, we compare the time needed with and without parallelization.</p>
-
 
 ## Overview: Need for Big Data
 
@@ -54,15 +51,18 @@ The learning transfer is valid for:
 
 ### The dataset we use
 
-The dataset we used is ImageNet, which is composed of roughly 14M training images, 50k images for validation and 100k images for testing. A distinctive feature of ImageNet is that the image resolution is very high with 227*227*3 pixels per image. Since one pixel is occupying 8 bit in the memory, one image is ~0.3Mo in memory, so the entire dataset is ~1+To, making dealing with Imagenet a  Big Data problem.
+<p align="justify"> The dataset we used is ImageNet, which is composed of roughly 14M training images, 50k images for validation and 100k images for testing. A distinctive feature of ImageNet is that the image resolution is very high with 227*227*3 pixels per image. Since one pixel is occupying 8 bit in the memory, one image is ~0.3Mo in memory, so the entire dataset is ~1+To, making dealing with Imagenet a  Big Data problem. </p>
 
-
-## Overview: the infrastructure we used
-
-
-<p align="justify"> On every node, wedo late resetting from several different epochs and use Python Multiprocessing. The different processes train on four GPU. </p>
+## Overview: Architecture 
 
 <p align="justify"> In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs. </p>
+
+We train on FAS RC, with 20 compute nodes, using 4 GPUs. 
+
+We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
+
+<p align="justify"> On every node, we do late resetting from several different epochs and use Python Multiprocessing. The different processes train on 4 GPUs. </p>
+
 
 ## How to Use
 
