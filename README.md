@@ -41,6 +41,8 @@ We train using 4 GPUs.
 
 ## Overview: Need for Big Data
 
+The dataset we used is ImageNet, which is composed of roughly 14M training images, 50k images for validation and 100k images for testing. A distinctive feature of ImageNet is that the image resolution is very high with 227*227*3 pixels per image. Since one pixel is occupying 8 bit in the memory, one image is ~0.3Mo in memory, so the entire dataset is ~1+To, making dealing with Imagenet a  Big Data problem.
+
 ### Generalizing the Lottery Ticket initializations
 
 <p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. </p>
