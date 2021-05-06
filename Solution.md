@@ -77,6 +77,21 @@ Synchronization: We structured our architecture in order for different nodes to 
 We used 20 nodes with 4 GPUs per node on FAS RC.
 
 
+## Training
+
+- We save the weights at initialization. 
+- We save the weights at the final step of training
+- We define a grid on the epochs for which we want to perform late resetting and save the weights during the training at every one of these epochs
+
+Once this is done, ie we have initial weights + final weights + weights at the treillis of epochs, we can start IMP:
+Define a grid of thresholds on the magnitude of the final weights
+Compute the mask for every one of these thresholds [1 for loop]
+For every masked network, retrain from every selected epoch [1 for loop]
+These two for loops are where the parallelization occurs: this is where we will hopefully leverage MPI/OpenMP/Python multiprocessing. 
+
+
+
+
 
 
 
