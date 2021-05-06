@@ -40,6 +40,8 @@ ImageNet Dataset:
 
 <p align="justify"> Elephas implements a class of data-parallel algorithms on top of Keras, using Spark's RDDs and data frames. Keras Models are initialized on the driver, then serialized and shipped to workers, alongside with data and broadcasted model parameters. Spark workers deserialize the model, train their chunk of data and send their gradients back to the driver. The "master" model on the driver is updated by an optimizer, which takes gradients either synchronously or asynchronously. </p> 
 
+![](Elephas.gif)
+
 ## Profiling and training MobilenetV2
 
 
