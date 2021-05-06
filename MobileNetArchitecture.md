@@ -36,13 +36,9 @@ Here is a nice vizualisation of the difference between classical convolutions an
 
 ![](StandardConv.png)
 
-**Depthwise Convolution:**
+**Depthwise Convolution and Pointwise Convolution:**
 
-![](DepthwiseConvolution.png)
-
-**Pointwise Convolution:**
-
-![](PointwiseConvolution.png)
+![](DepthandPoint.png)
 
 Source of the images: 
 - https://machinethink.net/blog/googles-mobile-net-architecture-on-iphone/
