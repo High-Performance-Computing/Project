@@ -42,6 +42,8 @@ ImageNet Dataset:
 
 ![](Elephas.gif)
 
+In PySpark we provide Spark SQL data source API for loading image data as a DataFrame. Reference: https://spark.apache.org/docs/latest/ml-datasource.html 
+
 ## Profiling and training MobilenetV2
 
 
