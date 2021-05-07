@@ -74,5 +74,6 @@ We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 3. [Model and Data](ModelAndData.md)
 4. [MobileNet](MobileNetArchitecture.md)
 5. [How To Run](HowToRun.md)
-6. [Discussion](Discussion.md)
-7. [Replicability](Replicability.md)
+6. [Transfer Learning](TransferLearning.md)
+7. [Discussion](Discussion.md)
+8. [Replicability](Replicability.md)
