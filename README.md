@@ -59,7 +59,7 @@ The learning transfer is valid for:
 
 We train on FAS RC, with 20 compute nodes, using 4 GPUs. 
 
-![](cannon.png)
+![]Ccannon.png)
 
 We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 
