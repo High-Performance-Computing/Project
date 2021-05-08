@@ -77,9 +77,9 @@ squeue -u $USER
 
 ![](JobID.png)
 
+ssh to the node (here it is ssh aagk80gpu55)
 
 ```
-ssh to the node (here it is ssh aagk80gpu55)
 nvidia-smi -l 1 (dynamic visualization of the occupation of the 4 GPUs)
 ```
 
