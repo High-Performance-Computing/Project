@@ -1,6 +1,6 @@
 # How to Run
 
-In order to reproduce our results and run our code, one first needs to connect to <a href="https://www.rc.fas.harvard.edu/">FAS On Demand</a>. Them, in our team’s project location (cd /n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/), which we rendered it public for everyone to see our code and be able to run the code.
+<p align="justify"> In order to reproduce our results and run our code, one first needs to connect to <a href="https://www.rc.fas.harvard.edu/">FAS On Demand</a>. Them, in our team’s project location (cd /n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/), which we rendered it public for everyone to see our code and be able to run the code.
 
 Load the conda module with python >= 3.7 (otherwise the compatibility of tensorflow datasets 2.4 breaks the code):
 ```
