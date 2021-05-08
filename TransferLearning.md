@@ -28,3 +28,5 @@ This dataset contains 100 classes containing 600 images each. The images are 32x
 - vehicles 1	bicycle, bus, motorcycle, pickup truck, train
 - vehicles 2	lawn-mower, rocket, streetcar, tank, tractor
 
+## Transfer Learning Results
+
