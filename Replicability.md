@@ -2,6 +2,8 @@
 
 Replicability information. 
 
+![](Clusterbasic.png)
+
 ## For login node:
 
 ```
