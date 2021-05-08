@@ -1,6 +1,6 @@
 # How to Run
 
-<p align="justify"> In order to reproduce our results and run our code, one first needs to connect to <a href="https://www.rc.fas.harvard.edu/">FAS On Demand</a>. Them, in our team’s project location (cd /n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/), which we rendered it public for everyone to see our code and be able to run the code.
+<p align="justify"> In order to reproduce our results and run our code, one first needs to connect to <a href="https://www.rc.fas.harvard.edu/">FAS On Demand</a>. Them, in our team’s project location (cd /n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/), which we rendered it public for everyone to see our code and be able to run the code.  </p>
 
 Load the conda module with python >= 3.7 (otherwise the compatibility of tensorflow datasets 2.4 breaks the code):
 ```
@@ -79,7 +79,7 @@ nvidia-smi -l 1 (dynamic visualization of the occupation of the 4 GPUs)
 
 The output should look like:
 
-This output shows that the parallelization is successful, our bottleneck for the in the data pipeline with the CPU feeding the GPU has been resolved (we have now 90% util capacity of every 4 GPUs) and we are allocating the memory of the GPU in the right way since with every bus its memory its nearly saturated (we need to use batch size of $2^k$ so switching to the next batch size produces OOM error).
+<p align="justify">  This output shows that the parallelization is successful, our bottleneck for the in the data pipeline with the CPU feeding the GPU has been resolved (we have now 90% util capacity of every 4 GPUs) and we are allocating the memory of the GPU in the right way since with every bus its memory its nearly saturated (we need to use batch size of $2^k$ so switching to the next batch size produces OOM error).  </p>
 
 Once the initial run is done ( you can activate Slack notifications in wandb) https://docs.wandb.ai/ref/app/features/alerts you will be able to launch the IMP training using:
 ```
