@@ -16,17 +16,17 @@ This dataset contains 100 classes containing 600 images each. The images are 32x
 - household furniture (bed, chair, couch, table, wardrobe)
 - insects (bee, beetle, butterfly, caterpillar, cockroach)
 - large carnivores (bear, leopard, lion, tiger, wolf)
-- large man-made outdoor things	bridge, castle, house, road, skyscraper
-- large natural outdoor scenes	cloud, forest, mountain, plain, sea
-- large omnivores and herbivores	camel, cattle, chimpanzee, elephant, kangaroo
-- medium-sized mammals	fox, porcupine, possum, raccoon, skunk
-- non-insect invertebrates	crab, lobster, snail, spider, worm
-- people	baby, boy, girl, man, woman
-- reptiles	crocodile, dinosaur, lizard, snake, turtle
-- small mammals	hamster, mouse, rabbit, shrew, squirrel
-- trees	maple, oak, palm, pine, willow
-- vehicles 1	bicycle, bus, motorcycle, pickup truck, train
-- vehicles 2	lawn-mower, rocket, streetcar, tank, tractor
+- large man-made outdoor things	(bridge, castle, house, road, skyscraper)
+- large natural outdoor scenes (cloud, forest, mountain, plain, sea)
+- large omnivores and herbivores (camel, cattle, chimpanzee, elephant, kangaroo)
+- medium-sized mammals (fox, porcupine, possum, raccoon, skunk)
+- non-insect invertebrates (crab, lobster, snail, spider, worm)
+- people (baby, boy, girl, man, woman)
+- reptiles (crocodile, dinosaur, lizard, snake, turtle)
+- small mammals (hamster, mouse, rabbit, shrew, squirrel)
+- trees (maple, oak, palm, pine, willow)
+- vehicles 1 (bicycle, bus, motorcycle, pickup truck, train)
+- vehicles 2 (lawn-mower, rocket, streetcar, tank, tractor)
 
 ## Transfer Learning Results
 
