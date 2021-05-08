@@ -27,6 +27,7 @@ Sanity check: one should be able to run python test_gpu.py and get as output
 
 Install Spark:
 
+MISSING
 
 Load java module:
 
