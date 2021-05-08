@@ -89,7 +89,7 @@ The output should look like:
 
 <p align="justify">  This output shows that the parallelization is successful, our bottleneck for the in the data pipeline with the CPU feeding the GPU has been resolved (we have now 90% util capacity of every 4 GPUs) and we are allocating the memory of the GPU in the right way since with every bus its memory its nearly saturated (we need to use batch size of $2^k$ so switching to the next batch size produces OOM error).  </p>
 
-Once the initial run is done ( you can activate Slack notifications in wandb) https://docs.wandb.ai/ref/app/features/alerts you will be able to launch the IMP training using:
+Once the initial run is done (you can activate Slack notifications in wandb) https://docs.wandb.ai/ref/app/features/alerts you will be able to launch the IMP training using:
 ```
 sbatch SLURM.sh
 ```
