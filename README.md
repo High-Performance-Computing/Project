@@ -66,7 +66,7 @@ We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 
 ## How to Use
 
-<p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see [How To Run](HowToRun.md) on the project website. </p>
+<p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see [How To Run](HowToRun.md). </p>
 
 ## Table of Contents
 1. [Problem Statement](ProblemStatement.md)
