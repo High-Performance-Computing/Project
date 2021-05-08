@@ -23,7 +23,9 @@ Allocate a session with 4 GPUs, on the gpu partition, with 100GB and 10 hours:
 salloc -t 600 --mem=100G -p gpu --exclusive --gres=gpu:4
 ```
 
-Sanity check: one should be able to run python test_gpu.py and get as output
+Sanity check: one should be able to run python test_gpu.py and get as output:
+
+[](Sanitycheck.png)
 
 ### Install Spark
 
