@@ -32,7 +32,7 @@ Replicability information.
 - NUMA node6 CPU(s):     48-55
 - NUMA node7 CPU(s):     56-63
 - Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxex
-- 
+
 t fxsr_opt pdpe1gb rdtscp lm constant_tsc art rep_good nopl nonstop_tsc extd_apicid amd_dcm aperfmperf pni pclmulqdq monitor ssse3 fma cx16 
 sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs xop skinit wdt fma4 tce nodeid_msr tbm topoext perfctr_core perfctr_nb cpb hw_pstate retpoline_amd ssbd ibpb vmmcall bmi1 arat npt lbrv svm_lock nrip_sav
 e tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
