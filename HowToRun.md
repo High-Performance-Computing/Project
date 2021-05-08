@@ -62,7 +62,7 @@ The output should look like this:
 
 ## How to train the initial MobileNet on ImageNet
 
-Create a <a href="https://wandb.ai/home">wandb</a> account in order to visualize training log
+Create a <a href="https://wandb.ai/home">wandb</a> account in order to visualize training log.
 
 Run the bash training script:
 ```
