@@ -66,14 +66,14 @@ We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 
 ## How to Use
 
-<p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see [How To Run]() on the project website. I THINK IT WOULD BE NICE TO DO SOMETHING LIKE THIS TO. </p>
+<p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see [How To Run](HowToRun) on the project website. </p>
 
 ## Table of Contents
 1. [Problem Statement](ProblemStatement.md)
 2. [Solution](Solution.md)
 3. [Model and Data](ModelAndData.md)
 4. [MobileNet](MobileNetArchitecture.md)
-5. [How To Run](HowToRun.md)
-6. [Transfer Learning](TransferLearning.md)
-7. [Discussion](Discussion.md)
+5. [Transfer Learning](TransferLearning.md)
+6. [Discussion](Discussion.md)
+7. [How To Run](HowToRun.md)
 8. [Replicability](Replicability.md)
