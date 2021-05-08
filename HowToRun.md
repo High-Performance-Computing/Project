@@ -25,9 +25,7 @@ salloc -t 600 --mem=100G -p gpu --exclusive --gres=gpu:4
 
 Sanity check: one should be able to run python test_gpu.py and get as output
 
-Install Spark:
-
-MISSING
+### Install Spark
 
 Load java module:
 
