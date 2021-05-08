@@ -37,7 +37,6 @@ Download Spark 3.1.1:
 ```
 curl -O https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz
 tar xvf spark-3.1.1-bin-hadoop3.2.tgz
-vim ~/.bashrc
 ```
 Add the following lines: 
 
@@ -45,6 +44,13 @@ Add the following lines:
 SPARK_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/spark
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 ```
+
+to ~/.bashrc for instance by using:
+
+```
+vim ~/.bashrc
+```
+
 Check that it’s working:
 ```
 pyspark
