@@ -53,6 +53,12 @@ to ~/.bashrc for instance by using:
 vim ~/.bashrc
 ```
 
+Then, to activate the changes in the environments:
+
+```
+source ~/.bashrc
+```
+
 Check that it’s working:
 ```
 pyspark
