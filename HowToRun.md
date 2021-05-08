@@ -54,7 +54,8 @@ The output should look like this:
 ![](Spark.png)
 
 
-How to train the initial MobileNet on ImageNet: 
+## How to train the initial MobileNet on ImageNet
+
 Create a wandb account in order to visualize training log: wandb.
 
 Run the bash training script:
