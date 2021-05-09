@@ -1,5 +1,18 @@
 # Problem
 
+## Basics of NN
+
+For those unfamiliar with deep learning, here are some terms we will be using throughout our writeup.
+
+- **Layer**:  
+- **Weight:** 
+
+### Need for Big Data
+
+- **Volume**:  
+- **Velocity**: 
+- **Variety**: 
+
 ## Numerical complexity
 
 The numerical complexity of doing late-resetting and masking is O(MNt). 
@@ -25,13 +38,14 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 
 <p align="justify"> Each worker needs to do several late resetting for the particular structure found after masking. Afterwards, there is no communication between the worker nodes. The communication time at the beginning is negligible compared to training time. The computation time per epoch is 4.5 minutes at best. We have 350 epochs, and perform 5 late resetting. Thus we achieve a run time of 131 h 15 min at best per worker node. This corresponds to a speed up of 20. </p> 
 
-## Amdahl Law (1967)
+### Amdahl Law (1967)
 
 Parallel execution Speed-up and Efficiency for a given problem size and a number of processors are given by:
 
 ![](Eqns.png)
 
 
+# More
 
 AMHDAL'S LAW
 THEORETICAL PARALLELIZATION PARTS 
@@ -42,36 +56,3 @@ Not using Spark elephas because then reached 100 occupation
 Spark for offline processing the data. Reshaping the data as tf tensors.
 Callbacks.
 
-
-
-
-
-
-# Structure from last year group
-
-## Basics of NN
-
-For those unfamiliar with deep learning, here are some terms we will be using throughout our writeup.
-
-- **Layer**:  
-- **Weight:** 
-
-
-## Challenges
-
-Need for LTH (Storage).
-
-## Algorithm: LTH
-
-
-## Need for High Performance Computing and Big Data
-
-### High Performance Computing
-
-- The bottleneck for the algorithm is the need for a lot of computation. 
-
-### Need for Big Data
-
-- **Volume**:  
-- **Velocity**: 
-- **Variety**: 
