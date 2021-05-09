@@ -48,14 +48,22 @@ Parallel execution Speed-up and Efficiency for a given problem size and a number
 
 In our case S=20 and E=1.
 
-# More
 
-AMHDAL'S LAW
-THEORETICAL PARALLELIZATION PARTS 
+## GPU occupancy
 
+" A CUDA device's hardware implementation groups adjacent threads within a block into warps. A warp is active from the time its threads begin executing to the time when all threads in the warp have exited from the kernel. Occupancy is the ratio of active warps on an SM to the maximum number of active warps supported by the SM. Occupancy varies over time as warps begin and end, and can be different for each SM. "
 
-GPUs: low occupation
-Not using Spark elephas because then reached 100 occupation
-Spark for offline processing the data. Reshaping the data as tf tensors.
-Callbacks.
+Low occupancy results in poor instruction issue efficiency, because there are not enough eligible warps to hide latency between dependent instructions. When occupancy is at a sufficient level to hide latency
+
+Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
+
+We manage to increase the GPU occupancy.
+
+![](GPUoccupancy.png)
+
+![](GPUoccupancy2.png)
+
+## Spark for offline processing of the data
+
+We reshaped the data as tf tensors before loading it. 
 
