@@ -141,7 +141,7 @@ sbatch SLURM.sh
 In order to check that you have effective parallelization across different nodes:
 
 ```
-Nvidia-smi -l 1
+nvidia-smi -l 1
 ```
 
 Last, we logged the results and the configuration (mask & late resetting epoch) using wandb and selected the best model. 
