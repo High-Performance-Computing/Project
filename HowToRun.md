@@ -104,6 +104,25 @@ mvn -version
 ```
 Your output should be
 
+Build tensorflow Hadoop
+```
+cd ecosystem/hadoop
+mvn cleann install
+```
+
+Build Spark Tensorflow Connector
+```
+cd ../spark/spark-tensorflow-connector
+mvn clean install
+```
+
+Change the spark-defaults.conf.template default memory from 5G to 15G
+
+Sanity check: 
+```
+pyspark --jars ecosystem/spark/spark-tensorflow-connector/target/spark-tensorflow-connector_2.12-1.11.0.jar < test_spark.py
+```
+
 ## How to train the initial MobileNet on ImageNet
 
 Create a <a href="https://wandb.ai/home">wandb</a> account in order to visualize training log.
