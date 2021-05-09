@@ -40,7 +40,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 ### Generalizing the Lottery Ticket initializations
 
-<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. </p>
+<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. There is also a good talk Ari Morcos, <a href="Generalizing The Lottery Ticket Hypothesis Across Datasets and Optimizers">https://www.youtube.com/watch?v=oOgbHpjTwwA</a>. </p> 
  
  
 The learning transfer is valid for:
