@@ -102,7 +102,9 @@ In order to check that the change is effective, you can run
 ```
 java -XshowSettings:vm
 ```
-Your output should look like
+Your output should look like:
+
+![](Output2look.png)
 
 
 ## Download Imagenet
