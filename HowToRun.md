@@ -104,7 +104,7 @@ mvn -version
 ```
 Your output should be:
 
-![](Outputshoudlbe.png)
+![](Outputshouldbe.png)
 
 Build tensorflow Hadoop
 ```
