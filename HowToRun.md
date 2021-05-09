@@ -104,7 +104,7 @@ java -XshowSettings:vm
 ```
 Your output should look like:
 
-![](Output2look.png)
+![](Output2look.PNG)
 
 
 ## Download Imagenet
