@@ -59,9 +59,9 @@ Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysi
 
 We manage to increase the GPU occupancy.
 
-![](GPUoccupancy.png)
+![](GPU1.png)
 
-![](GPUoccupancy2.png)
+![](GPU2.png)
 
 ## Spark for offline processing of the data
 
