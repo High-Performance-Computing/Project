@@ -92,6 +92,19 @@ Your output should be:
 
 ![](Outpushouldbe.png)
 
+Last, in order to run the Spark offline preprocessing step, you should increase the size of your heap size and java heap size:
+
+```
+ulimit -s 64000
+export _JAVA_OPTIONS="-Xmx5g"
+```
+In order to check that the change is effective, you can run 
+```
+java -XshowSettings:vm
+```
+Your output should look like
+
+
 ## Download Imagenet
 
 Here are the links that have been used to download the ImageNet dataset:
