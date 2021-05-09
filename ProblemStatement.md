@@ -28,6 +28,12 @@ sparse subnetworks, so they will train faster than the original one).
 
 
 
+AMHDAL'S LAW
+THEORETICAL PARALLELIZATION PARTS 
+
+
+
+
 
 
 # Structure from last year group
