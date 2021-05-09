@@ -30,4 +30,4 @@ We used the ticket found on Imagenet and used it on  <a href="https://www.cs.tor
 
 ## Transfer Learning Results
 
-After running our model we get a top 5 accuracy of 81% and 72% for the top 1 accuracy. In comparison, in the paper <a href="https://arxiv.org/pdf/1908.01314v4.pdf">Searching Beyond MobileNetV3</a> by Xiangxiang Chu, Bo Zhang  Ruijun Xu, the model developped yields respectively 93% and 76% for top 5 accuracy and top 1 accuracy.
+<p align="justify"> After running our model we get a top 5 accuracy of 81% and 72% for the top 1 accuracy. In comparison, in the paper <a href="https://arxiv.org/pdf/1908.01314v4.pdf">Searching Beyond MobileNetV3</a> by Xiangxiang Chu, Bo Zhang  Ruijun Xu, the model developped yields respectively 93% and 76% for top 5 accuracy and top 1 accuracy.  </p>
