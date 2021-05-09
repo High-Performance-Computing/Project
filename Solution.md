@@ -145,6 +145,12 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the orignial network. 
 
 
+## To sort
+
+![](top5accuracysweep.png)
+![](top5accuracyCNN.png)
+
+
 
 
 
