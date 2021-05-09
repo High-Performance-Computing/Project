@@ -68,7 +68,7 @@ Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysi
 
 ![](GPU1.png)
 
-We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. After resolving this issues, we manageed to increase the GPU occupancy
+We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. After resolving the preprocessing issues, we manageed to increase the GPU occupancy
 
 ![](GPU2.png)
 
