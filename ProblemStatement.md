@@ -48,6 +48,8 @@ Parallel execution Speed-up and Efficiency for a given problem size and a number
 
 In our case S=20 and E=1.
 
+## CPU and GPU training
+
 
 ## GPU occupancy
 
