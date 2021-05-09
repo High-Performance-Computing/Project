@@ -48,6 +48,9 @@ Parallel execution Speed-up and Efficiency for a given problem size and a number
 
 In our case S=20 and E=1.
 
+## CPU and GPU training
+
+![](CPU.png)
 
 ## GPU occupancy
 
@@ -59,9 +62,13 @@ Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysi
 
 We manage to increase the GPU occupancy.
 
-![](GPUoccupancy.png)
+![](GPU1.png)
 
-![](GPUoccupancy2.png)
+We see that initially, the occupancy is 0%. We manage to increase this:
+
+![](GPU2.png)
+
+Finally, we were able to reach 100% GPU occupancy.
 
 ## Spark for offline processing of the data
 
