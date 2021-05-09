@@ -29,8 +29,7 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 
 Parallel execution Speed-up and Efficiency for a given problem size and a number of processors are given by:
 
-![](Eq1.pdf)
-![](Eq2.pdf)
+![](Eqns.png)
 
 
 
