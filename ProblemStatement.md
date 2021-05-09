@@ -27,7 +27,7 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 - N is the length of the trellis for late resetting  
 - t is the average time to train a network (we actually use sparse subnetworks, so they train faster than the original one).
 
-### Theoretical Speed up & expected scalability: no worker parallelization
+### Theoretical Speed up & expected scalability
 
 <p align="justify"> In our case, the numerical complexity of doing late-resetting and masking is O(100t). </p>
 
@@ -38,13 +38,9 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 <p align="justify"> Thus, the expected time in order to run all the sparser substructures from the different epochs is 
 2625 hours without worker parallelization. </p>
 
+<p align="justify"> We use 20 worker nodes. Each worker needs to do several late resetting for the particular structure found after masking. Afterwards, there is no communication between the worker nodes. The communication time at the beginning is negligible compared to training time. The computation time per epoch is 4.5 minutes at best. We have 350 epochs, and perform 5 late resetting. Thus we achieve a run time of 131 h 15 min at best per worker node. This corresponds to a speed up of 20. </p> 
 
-## Theoretical speed-up and scalability expected
-
-
-<p align="justify"> Each worker needs to do several late resetting for the particular structure found after masking. Afterwards, there is no communication between the worker nodes. The communication time at the beginning is negligible compared to training time. The computation time per epoch is 4.5 minutes at best. We have 350 epochs, and perform 5 late resetting. Thus we achieve a run time of 131 h 15 min at best per worker node. This corresponds to a speed up of 20. </p> 
-
-### Amdahl Law (1967)
+#### Amdahl Law (1967)
 
 Parallel execution Speed-up and Efficiency for a given problem size and a number of processors are given by:
 
