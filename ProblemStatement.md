@@ -74,11 +74,11 @@ Low occupancy results in poor instruction issue efficiency, because there are no
 
 Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
 
-We manage to increase the GPU occupancy.
+### Increasing the GPU occupancy
 
 ![](GPU1.png)
 
-We see that initially, the occupancy is 0%. We manage to increase this:
+We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. After resolving this issues, we manageed to increase the GPU occupancy
 
 ![](GPU2.png)
 
