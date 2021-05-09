@@ -50,7 +50,7 @@ e tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
 
 ## For compute node:
 
-The following information is obtained by using on a compute node (follow [How to Run](HowToRun.md)):
+The following information is obtained by using on a compute node (follow [How to Run](HowToRun.md) first):
 
 ```
 lscpu
