@@ -149,6 +149,8 @@ We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ....,
 
 ![](top5accuracysweep.png)
 ![](top5accuracyCNN.png)
+![](trainingloss.png)
+![](validationloss.png)
 
 
 
