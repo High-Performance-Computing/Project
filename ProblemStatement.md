@@ -61,7 +61,11 @@ We manage to increase the GPU occupancy.
 
 ![](GPU1.png)
 
+We see that initially, the occupancy is 0%. We manage to increase this:
+
 ![](GPU2.png)
+
+Finally, we were able to reach 100% GPU occupancy.
 
 ## Spark for offline processing of the data
 
