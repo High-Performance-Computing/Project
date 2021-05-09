@@ -50,7 +50,7 @@ Parallel execution Speed-up and Efficiency for a given problem size and a number
 
 ![](Eqns.png)
 
-In our case S(
+In our case S=20.
 
 # More
 
