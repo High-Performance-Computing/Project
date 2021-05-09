@@ -23,9 +23,9 @@ ImageNet Dataset:
 - ImageNet Dataset size: 157.3 GB
 - Average image resolution (downloaded): 469x387
 - Average image resolution (preprocessed): 227x227
-- Solution: PySpark API Dataflow Parallelization (download and process ImageNet)
-- Solution: Performance Optimization (caching, prefetching)
-- Solution: Keras Extension Elephas Data-parallel Training
+- **Solution**: PySpark API Dataflow Parallelization (download and process ImageNet)
+- **Solution**: Performance Optimization (caching, prefetching)
+- **Solution**: Keras Extension Elephas Data-parallel Training
 
 ## Programming model and infrastructure
 
