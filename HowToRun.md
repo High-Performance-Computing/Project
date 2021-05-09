@@ -92,7 +92,7 @@ Your output should be:
 
 ![](Outpushouldbe.png)
 
-## Download MobileNet 
+## Download Imagenet
 
 Here are the links that have been used to download the ImageNet dataset:
 
