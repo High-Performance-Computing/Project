@@ -4,6 +4,8 @@
 
 For those unfamiliar with deep learning, here are some terms we will be using throughout our writeup.
 
+![](NeuralNetwork.png)
+
 - **Layer**:  
 - **Weight:** 
 
