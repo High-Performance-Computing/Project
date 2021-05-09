@@ -54,13 +54,15 @@ We use the following link to train on multiple GPUs: https://towardsdatascience.
 ```
 tf.distribute.Strategy
 ```
-is a TensorFlow API to distribute training across multiple GPU.
+is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
 
 ![](CPU.png)
 
 We bring down the time with GPUs:
 
 ![](GPU.png)
+
+With 4 GPUs and a batch size of 96:
 
 ![](4GPU.png)
 
