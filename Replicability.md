@@ -6,9 +6,12 @@ Replicability information.
 
 ## For login node:
 
+The following information is obtained by using:
+
 ```
 lscpu
 ```
+
 
 - Architecture:          x86_64
 - CPU op-mode(s):        32-bit, 64-bit
@@ -46,6 +49,8 @@ sse4_1 sse4_2 popcnt aes xsave avx f16c lahf_lm cmp_legacy svm extapic cr8_legac
 e tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
 
 ## For compute node:
+
+The following information is obtained by using on a compute node (follow [How to Run](HowToRun.md)):
 
 ```
 lscpu
