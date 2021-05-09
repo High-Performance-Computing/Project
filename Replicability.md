@@ -97,3 +97,7 @@ nvidia-smi
 
 The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm process, it is based on the GK210 graphics processor.
 
+## Spark
+
+We used Spark version 3.1.1.
+
