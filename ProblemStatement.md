@@ -9,9 +9,12 @@ For those unfamiliar with deep learning, here are some terms we will be using th
 
 ### Need for Big Data
 
-- **Volume**:  
-- **Velocity**: 
-- **Variety**: 
+We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at onece, and we are only delaing with images). However, one can imagine that lottery tickets found on Imagenet coukd be used on a variety of tasks that use convolutions (computer vision, speech recognition...)
+
+- **Volume**: 
+     -  1.23M training images
+- **Velocity**: Not considered in our project 
+- **Variety**: Not considered in our project
 
 ## Numerical complexity
 
