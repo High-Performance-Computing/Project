@@ -53,6 +53,45 @@ The output should look like this:
 
 ![](Spark.png)
 
+### Install Spark-Tensorflow Connector
+
+Clone the Spark Tensorflow Repository
+```
+git clone https://github.com/tensorflow/ecosystem.git
+```
+
+Install <a href="https://maven.apache.org/">maven</a> for Hadoop
+```
+wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/
+tar xf apache-maven-3.8.1.tar.gz
+mv apache-maven-3.8.1 maven
+```
+Update your environment variables:
+
+```
+vim ~/.bashrc
+```
+
+Add the lines:
+```
+export M2_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/maven
+export MAVEN_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/maven
+export PATH=${M2_HOME}/bin:${PATH}
+```
+
+Activate the Changes:
+```
+source ~/.bashrc
+```
+
+Sanity check: 
+```
+mvn -version
+```
+Your output should be:
+
+![](Outpushouldbe.png)
+
 ## Download MobileNet 
 
 Here are the links that have been used to download the ImageNet dataset:
