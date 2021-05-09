@@ -1,15 +1,5 @@
 # Problem
 
-## Basics of NN
-
-For those unfamiliar with deep learning, here are some terms we will be using throughout our writeup.
-
-![](NeuralNetwork.png)
-
-<p align="justify"> A neural network is composed of multiple layers, including an input layer and an output layer. Layers are themselves composed of nodes. The node of the input layer in a computer vision application correpsond to pixel values. The output layer can either correspond to a one-hot-encoding of labels, or to a vector whose entries are between 0 and 1 and sum to one (when we use the softmax activation function). </p> 
-
-Source of the image: https://www.ibm.com/cloud/learn/neural-networks
-
 ## Need for Big Data
 
 <p align="justify"> We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at onece, and we are only delaing with images). However, one can imagine that lottery tickets found on Imagenet coukd be used on a variety of tasks that use convolutions (computer vision, speech recognition...). </p> 
