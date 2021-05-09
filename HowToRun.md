@@ -102,7 +102,9 @@ Sanity check:
 ```
 mvn -version
 ```
-Your output should be
+Your output should be:
+
+![](Outputshoudlbe.png)
 
 Build tensorflow Hadoop
 ```
