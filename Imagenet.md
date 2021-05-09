@@ -25,4 +25,4 @@ Here are some characteristic of the dataset:
 - Average image resolution (downloaded): 469x387 
 - Average image resolution (preprocessed): 227x227
 
-Our problem falls under the Big Data kind and we need to leverage Spark in order to deal with this amount of data. Just to get a sense of how large ImageNet is, when the model ResNet50 runs over the dataset on 8 GPUs (p3.16xlarge instance on AWS), it takes nearly 30min to reach a 93% accuracy on the data. This is why we need to use Spark in addition to our 4 GPUs.
+<p align="justify"> Our problem falls under the Big Data kind and we need to leverage Spark in order to deal with this amount of data. Just to get a sense of how large ImageNet is, when the model ResNet50 runs over the dataset on 8 GPUs (p3.16xlarge instance on AWS), it takes nearly 30min to reach a 93% accuracy on the data. This is why we need to use Spark in addition to our 4 GPUs. </p>
