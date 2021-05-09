@@ -23,9 +23,7 @@ Allocate a session with 4 GPUs, on the gpu partition, with 100GB and 10 hours:
 salloc -t 600 --mem=100G -p gpu --exclusive --gres=gpu:4
 ```
 
-Sanity check: one should be able to run python test_gpu.py and get as output:
-
-![](Sanitycheck.png)
+Sanity check: one should be able to run python test_gpu.py and get as output
 
 ### Install Spark
 
@@ -39,6 +37,7 @@ Download Spark 3.1.1:
 ```
 curl -O https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz
 tar xvf spark-3.1.1-bin-hadoop3.2.tgz
+vim ~/.bashrc
 ```
 Add the following lines: 
 
@@ -46,19 +45,6 @@ Add the following lines:
 SPARK_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/spark
 export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 ```
-
-to ~/.bashrc for instance by using:
-
-```
-vim ~/.bashrc
-```
-
-Then, to activate the changes in the environments:
-
-```
-source ~/.bashrc
-```
-
 Check that it’s working:
 ```
 pyspark
@@ -67,67 +53,22 @@ The output should look like this:
 
 ![](Spark.png)
 
-### Install Spark-Tensorflow Connector
+## Download MobileNet 
 
-Clone the Spark Tensorflow Repository
-```
-git clone https://github.com/tensorflow/ecosystem.git
-```
+Here are the links that have been used to download the ImageNet dataset:
 
-Install <a href="https://maven.apache.org/">maven</a> for Hadoop
-```
-wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/
-tar xf apache-maven-3.8.1.tar.gz
-mv apache-maven-3.8.1 maven
-```
-Update your environment variables:
+- Train images : http://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_train.tar 
+- Train images : http://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_train_t3.tar 
+- Validation images: http://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar 
+- Test images: http://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_test_v10102019.tar  
+- Development kit : http://image-net.org/data/ILSVRC/2012/ILSVRC2012_devkit_t12.tar.gz 
+- Development kit : http://image-net.org/data/ILSVRC/2012/ILSVRC2012_devkit_t3.tar.gz 
 
-```
-vim ~/.bashrc
-```
 
-Add the lines:
-```
-export M2_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/maven
-export MAVEN_HOME=/n/holyscratch01/Academic-cluster/Spring_2021/g_84102/SCRATCH/ImageNet/maven
-export PATH=${M2_HOME}/bin:${PATH}
-```
-
-Activate the Changes:
-```
-source ~/.bashrc
-```
-
-Sanity check: 
-```
-mvn -version
-```
-Your output should be:
-
-![](Outpushouldbe.png)
-
-Build tensorflow Hadoop
-```
-cd ecosystem/hadoop
-mvn cleann install
-```
-
-Build Spark Tensorflow Connector
-```
-cd ../spark/spark-tensorflow-connector
-mvn clean install
-```
-
-Change the spark-defaults.conf.template default memory from 5G to 15G
-
-Sanity check: 
-```
-pyspark --jars ecosystem/spark/spark-tensorflow-connector/target/spark-tensorflow-connector_2.12-1.11.0.jar < test_spark.py
-```
 
 ## How to train the initial MobileNet on ImageNet
 
-Create a <a href="https://wandb.ai/home">wandb</a> account in order to visualize training log.
+Create a <a href="https://wandb.ai/home">wandb</a> account in order to visualize training log
 
 Run the bash training script:
 ```
@@ -142,9 +83,9 @@ squeue -u $USER
 
 ![](JobID.png)
 
-ssh to the node (here it is ssh aagk80gpu55)
 
 ```
+ssh to the node (here it is ssh aagk80gpu55)
 nvidia-smi -l 1 (dynamic visualization of the occupation of the 4 GPUs)
 ```
 
@@ -154,14 +95,14 @@ The output should look like:
 
 <p align="justify">  This output shows that the parallelization is successful, our bottleneck for the in the data pipeline with the CPU feeding the GPU has been resolved (we have now 90% util capacity of every 4 GPUs) and we are allocating the memory of the GPU in the right way since with every bus its memory its nearly saturated (we need to use batch size of $2^k$ so switching to the next batch size produces OOM error).  </p>
 
-Once the initial run is done (you can <a href="https://docs.wandb.ai/ref/app/features/alerts">activate Slack notifications in wandb</a>) you will be able to launch the IMP training using:
+Once the initial run is done ( you can activate Slack notifications in wandb) https://docs.wandb.ai/ref/app/features/alerts you will be able to launch the IMP training using:
 ```
 sbatch SLURM.sh
 ```
 In order to check that you have effective parallelization across different nodes:
 
 ```
-nvidia-smi -l 1
+Nvidia-smi -l 1
 ```
 
 Last, we logged the results and the configuration (mask & late resetting epoch) using wandb and selected the best model. 

@@ -32,7 +32,10 @@ ImageNet Dataset:
 - We use FAS RC (take advantage of the SCRATCH space [300+GB] and the ease of allocating several nodes for MPI). 
 -Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1
 - We used Spark to download the data [working closely with FAS in order to devise the right SLURM allocations for the different workers to access the GPUs safely]
-- We use MPI for communication between our nodes and Python Multiprocessing for parallelization within a node 
+
+![](Spark_solution.gif)
+
+- We use MPI for communication between our nodes and Python Multiprocessing for parallelization within a node. We allocate jobs to different nodes and then on every node, we use Spark 
 - Train using TensorFlow 2.0 (leveraging cuda and cudnn) and <a href="https://github.com/maxpumperla/elephas">Elephas</a> (PySpark module) in order to accelerate batch training 
 - Objective: End solution comprises 20 worker nodes, each one will have 4 GPUs TESLA K80 with 11.5 GB memory and 64 CPUs 
 
@@ -91,16 +94,17 @@ We used 20 nodes with 4 GPUs per node on FAS RC.
 - We save the weights at the final step of training.
 - We define a grid on the epochs for which we want to perform late resetting and save the weights during the training at every one of these epochs.
 
-<p align="justify"> Once this is done, ie we have the initial & final values of the weights, as well as the values of the weights at the treillis of epochs, we can start IMP, we:
+<p align="justify"> Once this is done, i.e. we have the initial & final values of the weights, as well as the values of the weights at the treillis of epochs, we can start IMP, we:
+
 - Define a grid of thresholds on the magnitude of the final weights
-- Compute the mask for every one of these thresholds -> one loop
-- For every masked network, retrain from every selected epoch (on a single node) -> 1 loop
-- 
-These two for loops are where the parallelization occurs.
+- Compute the mask for every one of these thresholds in a loop
+- For every masked network, retrain from every selected epoch (on a single node) in another loop
  
- #### Weights exploration
+These two "for" loops are where the parallelization occurs.
  
-We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
+#### Weights exploration
+ 
+To do this task we submit the different jobs using a bash file. We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
 
 - The minimum weight norm is 0.0
 - The maximum weight norm is 2226.8171
