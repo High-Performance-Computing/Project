@@ -32,6 +32,12 @@ AMHDAL'S LAW
 THEORETICAL PARALLELIZATION PARTS 
 
 
+GPUs: low occupation
+Not using Spark elephas because then reached 100 occupation
+Spark for offline processing the data. Reshaping the data as tf tensors.
+Callbacks.
+
+
 
 
 
