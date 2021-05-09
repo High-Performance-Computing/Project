@@ -50,6 +50,7 @@ In our case S=20 and E=1.
 
 ## CPU and GPU training
 
+![](CPU.png)
 
 ## GPU occupancy
 
