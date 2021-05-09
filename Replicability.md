@@ -93,5 +93,5 @@ nvidia-smi
 
 ![](Nvi.png)
 
-The Tesla K80 was a professional graphics card by NVIDIA, launched in November 2014. Built on the 28 nm process, and based on the GK210 graphics processor, in its GK210-885-A1 variant, the card supports DirectX 12.
+The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm process, it is based on the GK210 graphics processor.
 
