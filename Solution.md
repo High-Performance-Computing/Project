@@ -36,13 +36,10 @@
 ![](Images/Vectorized.png)
  
 After parallelization of the data pipeline, down to 15 mins/epoch 
+
 Next step to reach 100% GPU occupation: Offline processing of the data using Spark
 
 Synchronization: We structured our architecture in order for different nodes to be independent
-
-##### FAS RC
-
-We used 20 nodes with 4 GPUs per node on FAS RC.
 
 ## CPU and GPU Training
 
@@ -68,7 +65,8 @@ We bring down the time further with 4 GPUs and a batch size of 96:
 
 <p align="justify">  " A CUDA device's hardware implementation groups adjacent threads within a block into warps. A warp is active from the time its threads begin executing to the time when all threads in the warp have exited from the kernel. Occupancy is the ratio of active warps on an SM to the maximum number of active warps supported by the SM. Occupancy varies over time as warps begin and end, and can be different for each SM. " </p>
 
-Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
+Source: 
+- https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
 
 ### Increasing the GPU Occupancy
 
@@ -129,7 +127,7 @@ Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 
 Those figures were obtained using wandb.
 
  
-#### Weights exploration
+### Weights exploration
 
 <p align="justify"> Once the initial training was done, we needed to select different thresholds to apply on the weights in order to perform the masking step of IMP. In order to do that, we had to explore the different weights of the model and decide based on the weights percentiles. </p>
 
@@ -173,8 +171,51 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the originial network. 
 
-## Training 
+## From MPI to SLURM
+
+![](Images/MPISlurm.png)
+
+##  Single Process vs Multiprocessing
+
+![](Images/SIngleProcessvsMultiprocessing.png)
+
+Optimizing the tf.callbacks 
+- Single Process
+    - Tf.callbacks on a single process: 3.3457s 
+- Multiprocessing  
+    - Tf.callbacks on 64 processes: 63.3417s
+ 
+Why is multiprocessing (MP) slowing down our code?
+- Computation time increase with # processes
+- Calling os.fork() at least 64 times!
+     - Creating a child process expensive (overhead)
+     - the number of trainable layers 155: ~ 3 tasks per process
+     - Tasks simple: matrix multiplication
+     - Overheads MP >> benefits MP
+
+Conclusion: MP not a suitable solution for problem
 
 ## Within node code optimization
 
-![](Images/SingleProcessvsMultiprocessing.png)
+Optimizing the tf.callbacks on a single process:
+
+![](Images/Codeprofiling.png)
+
+- Issue: convert_to_eager_tensor ~90%
+- Solution: convert_to_eager_tensor of mask outside the tf.callbacks
+- Result: reduced tf.callbacks runtime by ~50%
+
+![](Images/Codeprofiling2.png)
+
+## Results
+
+- Training a Single CNN on 4 GPUs: 
+    - Serial CPU Timing: 2000 hours
+    - Parallel result: 18 hours
+- Parallelization of the masking procedure over 10 nodes in a cascade
+    - Serial result: 18h*100 = ~75 days
+    - Parallel result: 18h*2*5 = ~15 days (shootout to Raminder & Francesco who gave us special privileges to allocate all the nodes at once)
+- Total Training time (taking into account Late Resetting and Masking):
+    - Fully Serial: ~ 8000 days
+    - Parallelization of our solution: ~15 days
+- Final speed up from single CPU to end-to-end solution: x500

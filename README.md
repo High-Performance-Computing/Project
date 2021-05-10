@@ -83,7 +83,7 @@ We leveraged GPU for TensorFlow. We used Spark and GPU Acceleration.
 ## Table of Contents
 1. [Problem Statement](ProblemStatement.md)
 2. [Imagenet](Imagenet.md)
-3. [MobileNet](MobileNetArchitecture.md)
+3. [MobileNet](MobileNet.md)
 4. [Solution](Solution.md)
 5. [Transfer Learning](TransferLearning.md)
 6. [Discussion](Discussion.md)
