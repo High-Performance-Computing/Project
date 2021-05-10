@@ -98,19 +98,20 @@ These two "for" loops are where the parallelization occurs.
 ## Initial training
 
 ### Training loss, validation loss, accuracy
+Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps.
 
-
-Here is the training loss:
+Here are our training losses across different hyperparameter configurations:
 ![](Images/TrainingLoss.png)
 
 Here is the validation loss:
 ![](Images/Validationloss.png)
 
-Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
-
+Here is the result of our HyperParameter Optimization for MobileNet. As you can see, the results are a bit better than in our final runs because of the fact that we used a subset of the data in order to optimize over this subset. This subset was only composed of 100 classes, explaining why we got better results. We decided to optimize over a subset of the data in order to have results faster.
 ![](Images/top5accuracysweep.png)
 
 ![](Images/top5accuracyCNN.png)
+Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
+
 
 ![](Images/ReportCNN.png)
 
