@@ -166,14 +166,8 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the originial network. 
 
-## Masking procedure
+## Training 
 
-In order to effectively perform the Masking procedure, we needed to retrain the different sparse subnetworks from different epochs. The entire runs were independent, so we decided to use SLURM Job Arrays in order to submit the different jobs. Since FAS On Demand oly has 10 nodes with GPUs and we wanted to use 20 thresholds, we used 2 cascade runs of 10 nodes in order to parallelize the late resetting across 10 different nodes. Every network was leveraging the Spark preprocessing and the effective 4 GPUs parallelization. 
+## Within node code optimization
 
-### Maintaining a Sparse Subnetwork
-
-Currently in Tensorflow, there aren't any ways to modify the computational graph of a Network. What we would like to do is to modify the weights in place in order to not have them in our architecture. However, this is currently not possible. Therefore, we used a Callback at the end of every Backward in order to prevent the pruned weights from moving from 0. 
-
-## Results
-
-We defined the Winning Ticket as the sparset architecture that would match the generalization performances of the initial CNN model. The sparset one we have found is composed of 12% of the initial weights, and has been retrained from epoch 10 towards the end. Its light weight and its generalization performances [Tranfer_learning.md] allowed us to conclude that we have successfully found the winning ticket. 
+![](SIngleProcessvsMultiprocessing.png)
