@@ -30,9 +30,19 @@
 - The CPU takes some time to feed the data to the GPU. 
 - **Solution:** Parallelization of the data pipeline using 144 different workers
 - **Solution:** Vectorization of the pipeline function using Batching
+
+![](Images/Vectorization.png)
+
+![](Images/Vectorization2.png)
  
 After parallelization of the data pipeline, down to 15 mins/epoch 
 Next step to reach 100% GPU occupation: Offline processing of the data using Spark
+
+Synchronization: We structured our architecture in order for different nodes to be independent
+
+##### FAS RC
+
+We used 20 nodes with 4 GPUs per node on FAS RC.
 
 ## CPU and GPU Training
 
