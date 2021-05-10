@@ -1,4 +1,4 @@
-# Description of our files (in cluster_files)
+# Description of our files (in Cluster_Files)
 
 ## Environment setup 
 ```
