@@ -70,13 +70,15 @@ we learn hyperparameters and their influence on the training time:
 - Learning Rate : arbitrary
 - Number of Epochs : 100
 
-We use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
+![](Images/CPU.png)
+
+We then use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
 ```
 is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
 
-![](Images/CPU.png)
+
 
 We bring down the time with GPUs:
 
