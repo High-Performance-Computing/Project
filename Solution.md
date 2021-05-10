@@ -117,7 +117,6 @@ Here is the Top-5 accuracy. Top-5 accuracy means any of our model's top 5 highes
 
 ![](top5accuracysweep.png)
 
-
 ![](top5accuracyCNN.png)
 
 ![](ReportCNN.png)
