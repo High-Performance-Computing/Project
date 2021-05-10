@@ -124,7 +124,7 @@ These two "for" loops are where the parallelization occurs.
 
 ### Training loss, validation loss, accuracy
 
-<p align="justify"> Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps. </p>
+<p align="justify"> Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps (see https://docs.wandb.ai/guides/sweeps). </p>
 
 Here are our training losses across different hyperparameter configurations:
 
