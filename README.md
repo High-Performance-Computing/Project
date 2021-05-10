@@ -38,7 +38,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 ## Overview: Need for Big Compute
 
-<p align="justify">  Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing. </p>
+<p align="justify">  Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Network is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing. </p>
 
 <p align="justify">  The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although MobileNet is lighter than most state of art CNN architectures, it is practically infeasible to train it on a single CPU. </p>
 
