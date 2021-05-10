@@ -91,11 +91,13 @@ tf.distribute.Strategy
 ```
 is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
 
-
-
 We bring down the time further with 4 GPUs and a batch size of 96:
 
 ![](Images/4GPU.png)
+
+- 1 epoch = 1 hour
+- 1 model = 100 epochs = 100 hours
+- 100 models = 10000 hours = ~400 days
 
 ## GPU Occupancy
 
