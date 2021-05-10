@@ -109,8 +109,9 @@ Here is the validation loss:
 Here is the result of our HyperParameter Optimization for MobileNet. As you can see, the results are a bit better than in our final runs because of the fact that we used a subset of the data in order to optimize over this subset. This subset was only composed of 100 classes, explaining why we got better results. We decided to optimize over a subset of the data in order to have results faster.
 ![](Images/top5accuracysweep.png)
 
-![](Images/top5accuracyCNN.png)
 Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
+
+![](Images/top5accuracyCNN.png)
 
 
 ![](Images/ReportCNN.png)
@@ -119,7 +120,8 @@ Those figures were obtained using wandb.
 
  
 #### Weights exploration
- 
+
+Once the initial training was done, we needed to select different thresholds to apply on the weights in order to perform the masking step of IMP. In order to do that, we had to explore the different weights of the model and decide based on the weights percentiles. 
 To do this task we submit the different jobs using a bash file. We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
 
 - The minimum weight norm is 0.0
