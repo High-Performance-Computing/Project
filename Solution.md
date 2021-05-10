@@ -72,6 +72,11 @@ we learn hyperparameters and their influence on the training time:
 
 ![](Images/CPU.png)
 
+We see that:
+- 1 epoch = 20 hours
+- 1 model = 100 epochs = 2000 hours
+- 100 models = 200000 hours = ~8000 days
+
 We then use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
