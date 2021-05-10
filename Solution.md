@@ -61,7 +61,14 @@ Synchronization: We structured our architecture in order for different nodes to 
 
 ## CPU and GPU Training
 
+First, using the following architecture:
+
 ![](Images/SingleGPUarchitecture.png)
+
+we learn hyperparameters and their influence on the training time:
+- Batch size : arbitrary
+- Learning Rate : arbitrary
+- Number of Epochs : 100
 
 We use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
