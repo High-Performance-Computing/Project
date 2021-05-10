@@ -2,7 +2,7 @@
 
 ## MobileNet
 
-<p align="justify"> We first examine the paper <a href="https://arxiv.org/abs/1704.04861">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</a>. The objectives of the author is to make neural networks much lighter, with an eye on deployement on mobiles and embedded vision applications, without compromising on accuracy. </p>
+<p align="justify"> We first examine the paper <a href="https://arxiv.org/abs/1704.04861">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</a>. The objectives of the author is to make neural networks much lighter, with an eye on deployment on mobiles and embedded vision applications, without compromising on accuracy. </p>
 
 ### Depthwise separable convolutions
  
@@ -15,7 +15,7 @@
 
 <p align="justify"> In a regular convolution, we apply a filter a D<sub>K</sub> by D<sub>K</sub> by M filter. So we look for relationships within each channel (D<sub>K</sub> by D<sub>K</sub>) and between channels. </p>
 
-<p align="justify"> The goal of depthwise seprable convolutions is to break down this process into two parts: first, we look for relationships within each channel, and then between different channels. This is illustrated below in figures b) and c). We first take D<sub>K</sub> by D<sub>K</sub> filters and apply them one each to a channel. We thus have M such filers, called depthwise convolutions. In image c), we can see the pointwise convolutions: those are 1 by 1 by M convolutions. </p>
+<p align="justify"> The goal of depthwise separable convolutions is to break down this process into two parts: first, we look for relationships within each channel, and then between different channels. This is illustrated below in figures b) and c). We first take D<sub>K</sub> by D<sub>K</sub> filters and apply them one each to a channel. We thus have M such filers, called depthwise convolutions. In image c), we can see the pointwise convolutions: those are 1 by 1 by M convolutions. </p>
 
 
 ![](Images/Mobilenet.png)
@@ -28,7 +28,7 @@
 
 The ratio between the cost of a depthwise separable convolution and a classical convolution is thus (1/N)+(1/(D<sub>K</sub> D<sub>K</sub>)).
 
-We can add a width multiplyier. We introduce a parameter &alpha;. The cost become D<sub>K</sub> D<sub>K</sub> &alpha M D<sub>F</sub> D<sub>F</sub>+ &alpha; M &alpha; N D<sub>F</sub> D<sub>F</sub>
+We can add a width multiplier. We introduce a parameter &alpha;. The cost become D<sub>K</sub> D<sub>K</sub> &alpha M D<sub>F</sub> D<sub>F</sub>+ &alpha; M &alpha; N D<sub>F</sub> D<sub>F</sub>
 
 Here is a nice vizualisation of the difference between classical convolutions and depthwise separable convolutions:
 
@@ -63,6 +63,9 @@ non-linearities. The lightly colored block indicates the beginning of the next b
 
 Source of the images: 
 - <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a>
+
+<p align="justify"> The model has 3.4 million parameters and 300 million multiply-adds per forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU. </p>
+
 
 ### MobileNetV3
 

@@ -10,7 +10,7 @@ For those unfamiliar with deep learning, here are some terms we will be using th
 
 ![](Images/NeuralNetwork.png)
 
-<p align="justify"> A neural network is composed of multiple layers, including an input layer and an output layer. Layers are themselves composed of nodes. The node of the input layer in a computer vision application correpsond to pixel values. The output layer can either correspond to a one-hot-encoding of labels, or to a vector whose entries are between 0 and 1 and sum to one (when we use the softmax activation function). </p> 
+<p align="justify"> A neural network is composed of multiple layers, including an input layer and an output layer. Layers are themselves composed of nodes. The node of the input layer in a computer vision application corresponds to pixel values. The output layer can either correspond to a one-hot-encoding of labels, or to a vector whose entries are between 0 and 1 and sum to one (when we use the softmax activation function). </p> 
 
 Source of the image: https://www.ibm.com/cloud/learn/neural-networks
 
@@ -38,7 +38,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 ## Overview: Need for Big Compute
 
-<p align="justify">  Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Netork is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing. </p>
+<p align="justify">  Firstly, we fit an overparameterized architecture, which ensures tractable non-convex optimization and robustness to corruption. The architecture we chose for the initial Neural Network is MobileNet Volume 2 by Google, as it drastically reduces the complexity and the network size in comparison to the other state of art CNN architectures. This choice will allow for more efficient algorithm prototyping and testing. </p>
 
 <p align="justify">  The MobileNet Volume 2 architecture has a total of 3.4 million parameters and 300 million multiply-add operations per single forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although MobileNet is lighter than most state of art CNN architectures, it is practically infeasible to train it on a single CPU. </p>
 
@@ -50,7 +50,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 ### Generalizing the Lottery Ticket initializations
 
-<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. There is also a good talk Ari Morcos, <a href="https://www.youtube.com/watch?v=oOgbHpjTwwA"> Generalizing The Lottery Ticket Hypothesis Across Datasets and Optimizers </a>. </p> 
+<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. There is also a good talk Ari Morcos, <a href="https://www.youtube.com/watch?v=oOgbHpjTwwA"> Generalizing The Lottery Ticket Hypothesis Across Datasets and Optimizers </a>. </p> 
  
  
 The learning transfer is valid for:
@@ -65,13 +65,13 @@ The learning transfer is valid for:
 
 ## Overview: Architecture 
 
-<p align="justify"> In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs. </p>
+<p align="justify"> In order to download and train our Neural Networks, we used Spark Elephas that requires data stored as RDDs. </p>
 
 We train on FAS RC, with 20 compute nodes, using 4 GPUs. 
 
 ![](Images/Cannon.png)
 
-We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
+We leveraged GPU for TensorFlow. We used Spark and GPU Acceleration.
 
 <p align="justify"> On every node, we do late resetting from several different epochs and use Python Multiprocessing. The different processes train on 4 GPUs. </p>
 
@@ -89,3 +89,4 @@ We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 6. [Discussion](Discussion.md)
 7. [How To Run](HowToRun.md)
 8. [Replicability](Replicability.md)
+9. [Description of the files](FilesDescription.md)
