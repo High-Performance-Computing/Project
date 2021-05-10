@@ -70,7 +70,9 @@ Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysi
 
 ![](Images/GPU2.png)
 
-Finally, we were able to reach 100% GPU occupancy.
+Finally, we were able to virtually reach 100% GPU occupancy.
+
+![](Images/GPUf.png)
 
 ## Spark for offline processing of the data
 
