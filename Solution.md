@@ -41,10 +41,6 @@ Next step to reach 100% GPU occupation: Offline processing of the data using Spa
 
 Synchronization: We structured our architecture in order for different nodes to be independent
 
-##### FAS RC
-
-We used 20 nodes with 4 GPUs per node on FAS RC.
-
 ## CPU and GPU Training
 
 ![](Images/SingleGPUarchitecture.png)
