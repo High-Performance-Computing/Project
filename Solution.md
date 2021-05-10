@@ -206,3 +206,16 @@ Optimizing the tf.callbacks on a single process:
 - Result: reduced tf.callbacks runtime by ~50%
 
 ![](Images/Codeprofiling2.png)
+
+## Results
+
+- Training a Single CNN on 4 GPUs: 
+    - Serial CPU Timing: 2000 hours
+    - Parallel result: 18 hours
+- Parallelization of the masking procedure over 10 nodes in a cascade
+    - Serial result: 18h*100 = ~75 days
+    - Parallel result: 18h*2*5 = ~15 days (shootout to Raminder & Francesco who gave us special privileges to allocate all the nodes at once)
+- Total Training time (taking into account Late Resetting and Masking):
+    - Fully Serial: ~ 8000 days
+    - Parallelization of our solution: ~15 days
+- Final speed up from single CPU to end-to-end solution: x500
