@@ -76,9 +76,24 @@ Source:
 
 ![](Images/GPU2.png)
 
+Issue: we can’t batch ImageNet because of non uniform shapes of Images
+- Solution: offline preprocessing Step, using either TFDS pipeline or Spark
+- Problems using Spark: the data is loaded as TF Records and not as .PNG files
+- Solution: Use a Spark Tensorflow Connector in order to load the TF Records as Spark
+DataFrames (requires using maven)
+- Using Spark pipelining: process 1024 images in 12 seconds
+- Using TFDS pipelining: process 1024 images in 38 seconds
+- Effective Data processing Speed up using spark: ~3 x
+
 Finally, we were able to virtually reach 100% GPU occupancy.
 
 ![](Images/GPUf.png)
+
+**Final results:**
+- 1 epoch = 11 minutes
+- 1 model = 100 epochs = ~18 hours
+- 100 models = ~75 days
+- Effective Speed-up from Single CPU: ~x100
 
 ## Spark for Offline Processing of the Data
 
