@@ -114,10 +114,10 @@ Here is the Top-5 accuracy. Top-5 accuracy means any of our model's top 5 highes
 ![](top5accuracyCNN.png)
 
 Here is the training loss:
-![](trainingloss.png)
+![](TrainingLoss.png)
 
 Here is the validation loss:
-![](validationloss.png)
+![](Validationloss.png)
 
  
 #### Weights exploration
