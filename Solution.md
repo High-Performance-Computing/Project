@@ -31,9 +31,9 @@
 - **Solution:** Parallelization of the data pipeline using 144 different workers
 - **Solution:** Vectorization of the pipeline function using Batching
 
-![](Images/Vectorized.png)
+![](Images/Vectorization.png)
 
-![](Images/Vectorized2.png)
+![](Images/Vectorization2.png)
  
 After parallelization of the data pipeline, down to 15 mins/epoch 
 Next step to reach 100% GPU occupation: Offline processing of the data using Spark
@@ -58,7 +58,7 @@ We bring down the time with GPUs:
 
 ![](Images/GPU.png)
 
-With 4 GPUs and a batch size of 96:
+We bring down the time further with 4 GPUs and a batch size of 96:
 
 ![](Images/4GPU.png)
 
