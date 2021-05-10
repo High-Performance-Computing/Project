@@ -104,7 +104,7 @@ These two "for" loops are where the parallelization occurs.
 
 ## Initial training
 
-### Training loss, validation loss, accuracy
+### Training loss, validation loss, accuracy
 
 ![](top5accuracysweep.png)
 ![](top5accuracyCNN.png)
