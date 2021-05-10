@@ -150,10 +150,6 @@ Finally, we were able to virtually reach 100% GPU occupancy.
 - 100 models = ~75 days
 - Effective Speed-up from Single CPU: ~x100
 
-## Spark for Offline Processing of the Data
-
-We reshaped the data as tf tensors before loading it. 
-
 
 ## Training
 
