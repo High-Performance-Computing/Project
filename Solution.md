@@ -34,12 +34,6 @@
 After parallelization of the data pipeline, down to 15 mins/epoch 
 Next step to reach 100% GPU occupation: Offline processing of the data using Spark
 
-Synchronization: We structured our architecture in order for different nodes to be independent
-
-##### FAS RC
-
-We used 20 nodes with 4 GPUs per node on FAS RC.
-
 ## CPU and GPU Training
 
 We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
