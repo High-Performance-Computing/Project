@@ -102,7 +102,8 @@ These two "for" loops are where the parallelization occurs.
 ## Initial training
 
 ### Training loss, validation loss, accuracy
-Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps.
+
+<p align="justify"> Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps. </p>
 
 Here are our training losses across different hyperparameter configurations:
 ![](Images/TrainingLoss.png)
@@ -110,7 +111,7 @@ Here are our training losses across different hyperparameter configurations:
 Here is the validation loss:
 ![](Images/Validationloss.png)
 
-Here is the result of our HyperParameter Optimization for MobileNet. As you can see, the results are a bit better than in our final runs because of the fact that we used a subset of the data in order to optimize over this subset. This subset was only composed of 100 classes, explaining why we got better results. We decided to optimize over a subset of the data in order to have results faster.
+<p align="justify"> Here is the result of our HyperParameter Optimization for MobileNet. As you can see, the results are a bit better than in our final runs because of the fact that we used a subset of the data in order to optimize over this subset. This subset was only composed of 100 classes, explaining why we got better results. We decided to optimize over a subset of the data in order to have results faster. </p>
 ![](Images/top5accuracysweep.png)
 
 Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
@@ -125,8 +126,9 @@ Those figures were obtained using wandb.
  
 #### Weights exploration
 
-Once the initial training was done, we needed to select different thresholds to apply on the weights in order to perform the masking step of IMP. In order to do that, we had to explore the different weights of the model and decide based on the weights percentiles. 
-To do this task we submit the different jobs using a bash file. We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks.
+<p align="justify"> Once the initial training was done, we needed to select different thresholds to apply on the weights in order to perform the masking step of IMP. In order to do that, we had to explore the different weights of the model and decide based on the weights percentiles. </p>
+
+<p align="justify"> To do this task we submit the different jobs using a bash file. We have 3538984 weights in our model. We studied the norms of the weights to decide on which thresholds to use for our masks. </p>
 
 - The minimum weight norm is 0.0
 - The maximum weight norm is 2226.8171
