@@ -46,7 +46,7 @@ We used 20 nodes with 4 GPUs per node on FAS RC.
 
 ## CPU and GPU Training
 
-![](SingleGPUarchitecture.png)
+![](Images/SingleGPUarchitecture.png)
 
 We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
