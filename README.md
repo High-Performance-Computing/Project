@@ -50,7 +50,7 @@ The original paper only provides experiments for MNIST and CIFAR-10, which are r
 
 ### Generalizing the Lottery Ticket initializations
 
-<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but to also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. There is also a good talk Ari Morcos, <a href="https://www.youtube.com/watch?v=oOgbHpjTwwA"> Generalizing The Lottery Ticket Hypothesis Across Datasets and Optimizers </a>. </p> 
+<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. This means that when we train and prune a neural network to get a winning ticket, the goal is not only to use the winning ticket on the specific dataset we are dealing with, but also on different datasets. The motivation is to avoid training and pruning our neural network everytime we change the settings of our problem. This idea where presented in the paper <a href="https://arxiv.org/abs/1906.02773">One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers</a> by Ari Morcos, Haonan Yu, Michela Paganini and Yuandong Tian. There is also a good talk Ari Morcos, <a href="https://www.youtube.com/watch?v=oOgbHpjTwwA"> Generalizing The Lottery Ticket Hypothesis Across Datasets and Optimizers </a>. </p> 
  
  
 The learning transfer is valid for:
@@ -65,13 +65,13 @@ The learning transfer is valid for:
 
 ## Overview: Architecture 
 
-<p align="justify"> In order to download and train our Neural Networks, we useed Spark Elephas that requires data stored as RDDs. </p>
+<p align="justify"> In order to download and train our Neural Networks, we used Spark Elephas that requires data stored as RDDs. </p>
 
 We train on FAS RC, with 20 compute nodes, using 4 GPUs. 
 
 ![](Images/Cannon.png)
 
-We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
+We leveraged GPU for TensorFlow. We used Spark and GPU Acceleration.
 
 <p align="justify"> On every node, we do late resetting from several different epochs and use Python Multiprocessing. The different processes train on 4 GPUs. </p>
 
