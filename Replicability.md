@@ -117,3 +117,8 @@ The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm proc
 
 We used Spark Standalone version. In order to see the installation, please refer to the [How to Run](HowToRun.md) section.
 
+## Python, mpi4py, Pyspark, Apache maven and java version
+
+Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1, Apache maven 3.8.1, java 1.8.0_45
+
+
