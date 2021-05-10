@@ -3,11 +3,11 @@
 ## Profiling and training MobilenetV2
 
 
-<p align="justify"> Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overhead between CPU and GPU. </p> 
+<p align="justify"> Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overheads between CPU and GPU. </p> 
 
-<p align="justify"> But the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low. </p>
+<p align="justify"> However, at this point the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low. </p>
 
-<p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect a 1X to 2X speed-up by further augmenting GPU occupation. </p>
+<p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect up to x2 speed-up by further augmenting GPU occupation. </p>
 
 ### Summary
 
@@ -22,7 +22,7 @@
 
 ### Communication: 
 
-- Performance of GPU applications can be bottlenecked by data transfers between the CPU nodes and GPU. It limits the peak throughput that can be obtained from these memory spaces
+- Performance of GPU applications can be bottlenecked by data transfers between the CPU and GPU. It limits the peak throughput that can be obtained from these memory spaces
 - **Solution:** Caching & Prefetching in order to accelerate data transfers between CPU & GPU
 
 ### Data processing: 
@@ -98,9 +98,9 @@ These two "for" loops are where the parallelization occurs.
 ## Initial training
 
 ### Training loss, validation loss, accuracy
-Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps.
 
-Here are our training losses across different hyperparameter configurations:
+
+Here is the training loss:
 ![](Images/TrainingLoss.png)
 
 Here is the validation loss:
@@ -111,8 +111,6 @@ Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 
 ![](Images/top5accuracysweep.png)
 
 ![](Images/top5accuracyCNN.png)
-
-Here is the result of our HyperParameter Optimization for MobileNet. As you can see, the results are a bit better than in our final runs because of the fact that we used a subset of the data in order to optimize over this subset. This subset was only composed of 100 classes, explaining why we got better results. We decided to optimize over a subset of the data in order to have results faster.
 
 ![](Images/ReportCNN.png)
 
