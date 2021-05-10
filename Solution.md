@@ -120,6 +120,8 @@ Here is the Top-5 accuracy. Top-5 accuracy means any of our model's top 5 highes
 
 ![](top5accuracyCNN.png)
 
+![](ReportCNN.png)
+
 Those figures were obtained using wandb.
 
  
