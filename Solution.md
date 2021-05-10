@@ -179,6 +179,8 @@ We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ....,
 
 ![](Images/SIngleProcessvsMultiprocessing.png)
 
+![](Images/MPISlurm.png)
+
 ![](Images/Codeprofiling.png)
 
 ![](Images/Codeprofiling2.png)
