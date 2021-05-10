@@ -1,5 +1,16 @@
 # Problem
 
+## Need for Big Compute
+
+**MobileNetV2 Architecture**: 
+- Total number of parameters: 3.4M 
+- Number of multiply-adds (MAdds) per forward pass: 300M
+
+**Two Nested For Loops to Find the Lottery Ticket Hypothesis**
+- Outer for loop: iterate over different masks (pruning thresholds)
+- Inner for loop: iterate over the range of late resetting epochs
+- Train a sparse MobileNetV2 CNN per each inner loop iteration
+
 ## Need for Big Data
 
 <p align="justify"> We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at once, and we are only delaing with images). However, one can imagine that lottery tickets found on Imagenet coukd be used on a variety of tasks that use convolutions (computer vision, speech recognition...). </p> 
