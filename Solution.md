@@ -1,6 +1,6 @@
 # Solution
 
-We first present an overview of the challenges we faced. We then go into details about parallelizating the training of a CNN in section 2 and about parallelizing the masking procedure in section 3.
+We first present an overview of the challenges we faced. We then go into details about parallelizating the training of a CNN in section 2 and about parallelizing the masking procedure in section 4.
 
 # Overview
 
@@ -151,7 +151,7 @@ Finally, we were able to virtually reach 100% GPU occupancy.
 - Effective Speed-up from Single CPU: ~x100
 
 
-## Training
+# Training
 
 - We save the weights at initialization. 
 - We save the weights at the final step of training.
