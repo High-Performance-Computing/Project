@@ -1,3 +1,8 @@
+# Why ImageNet ? 
+
+For the winning tickets to be effective, we need them to contain generic inductive biases. When we train and prune a neural network to get a winning ticket, it is not only for the specific dataset we are dealing with, but we do it broadly to get one winning ticket working for different datasets to avoid training and pruning our neural network everytime we change the settings of our problem. The bigger the dataset the more general the winning ticket we find. This is why we chose to use ImageNet.
+
+
 # Data
 
 We downloaded the Imagenet dataset using the following links:
