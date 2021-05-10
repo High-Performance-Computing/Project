@@ -1,4 +1,4 @@
-# Description of our .py, .sh and .txt files
+# Description of our files (in cluster_files)
 
 ## Environment setup 
 ```
