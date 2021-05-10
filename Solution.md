@@ -52,7 +52,7 @@ is a TensorFlow API to distribute training across multiple GPU. We use the mirro
 
 We bring down the time with GPUs:
 
-![](Project/Images/GPU.png)
+![](Images/GPU.png)
 
 With 4 GPUs and a batch size of 96:
 
