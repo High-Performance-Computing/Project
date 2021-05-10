@@ -102,7 +102,7 @@ Source:
 
 <p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. 
  
-Issue: we can’t batch ImageNet because of non uniform shapes of Images
+- Issue: we can’t batch ImageNet because of non uniform shapes of Images
 - Solution: offline preprocessing Step, using either TFDS pipeline or Spark
 - Problems using Spark: the data is loaded as TF Records and not as .PNG files
 - Solution: Use a Spark Tensorflow Connector in order to load the TF Records as Spark
@@ -111,7 +111,7 @@ DataFrames (requires using maven)
 - Using TFDS pipelining: process 1024 images in 38 seconds
 - Effective Data processing Speed up using spark: ~3 x
  
- After resolving the preprocessing issues, we manageed to increase the GPU occupancy: </p>
+ After resolving the preprocessing issues, we managed to increase the GPU occupancy: </p>
 
 **Changes:**
 - Parallelizing the preprocessing operations in the data pipeline (dynamic allocation of #workers)
