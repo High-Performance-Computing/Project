@@ -30,7 +30,7 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 
 - M is the number of thresholds for our masks (each mask gives us one subnetwork)
 - N is the length of the trellis for late resetting  
-- t is the average time to train a network (we actually use sparse subnetworks, so they train faster than the original one).
+- t is the average time to train a network (we actually use sparse subnetworks, so we expect them to train faster than the original one).
 
 ### Theoretical Speed up & expected scalability
 
