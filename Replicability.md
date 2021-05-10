@@ -2,7 +2,7 @@
 
 Replicability information. 
 
-![](Clusterbasic.png)
+![](Images/Clusterbasic.png)
 
 ## For login node:
 
@@ -97,7 +97,7 @@ scontrol show node node_name
 ```
 
 
-![](Computenodeinfo.png)
+![](Images/Computenodeinfo.png)
 
 ### GPU
 
@@ -107,7 +107,7 @@ The following information is obtained by using:
 nvidia-smi
 ```
 
-![](Nvi.png)
+![](Images/Nvi.png)
 
 The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm process, it is based on the GK210 graphics processor.
 
