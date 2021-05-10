@@ -1,6 +1,6 @@
 # Discussion: Next steps
 
-## Next avenes in order to speed up our training
+## Next avenues in order to speed up our training
 
 - It would be interesing to work with more recent NVIDIA GPUs (compute capability >= 7.0). The GPUs used in the project are Nvidia Tesla K80 and can't benefit from using Tensorflow Mixed Precision policy: expected speed-up x3 (experiment to be tried on AWS).
 - Use multi-node distributed training frameworks in order to speed up the training: <a href="https://github.com/horovod/horovod/blob/master/docs/keras.rst">Horovod</a>
