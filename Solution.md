@@ -43,7 +43,7 @@ ImageNet Dataset:
 
 <p align="justify"> Elephas implements a class of data-parallel algorithms on top of Keras, using Spark's RDDs and data frames. Keras Models are initialized on the driver, then serialized and shipped to workers, alongside with data and broadcasted model parameters. Spark workers deserialize the model, train their chunk of data and send their gradients back to the driver. The "master" model on the driver is updated by an optimizer, which takes gradients either synchronously or asynchronously. </p> 
 
-![](Elephas.gif)
+![](Images/Elephas.gif)
 
 In PySpark we provide Spark SQL data source API for loading image data as a DataFrame. Reference: https://spark.apache.org/docs/latest/ml-datasource.html 
 
@@ -108,18 +108,18 @@ These two "for" loops are where the parallelization occurs.
 
 
 Here is the training loss:
-![](TrainingLoss.png)
+![](Images/TrainingLoss.png)
 
 Here is the validation loss:
-![](Validationloss.png)
+![](Images/Validationloss.png)
 
 Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
 
-![](top5accuracysweep.png)
+![](Images/top5accuracysweep.png)
 
-![](top5accuracyCNN.png)
+![](Images/top5accuracyCNN.png)
 
-![](ReportCNN.png)
+![](Images/ReportCNN.png)
 
 Those figures were obtained using wandb.
 
@@ -165,26 +165,3 @@ To do this task we submit the different jobs using a bash file. We have 3538984 
 For example, if we choose a threshold of 2.9455150127410867, our mask will mask all the weights whose norm is lower than 2.9455150127410867. Thus we will be left with a network that has only one percent of the original size.
 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the orignial network. 
-
-
-
-
-
-
-
-
-
-## Structure from last year group
-
-
-## Our Approach
- 
-
-### Levels of Parallelism
-
-### Types of Parallelism within Application
-
-### Programming Models
-
-### Infrastructure
-
