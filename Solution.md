@@ -106,9 +106,17 @@ These two "for" loops are where the parallelization occurs.
 
 ### Training loss, validation loss, accuracy
 
+Here is the Top-5 accuracy. Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
+
 ![](top5accuracysweep.png)
+
+
 ![](top5accuracyCNN.png)
+
+Here is the training loss:
 ![](trainingloss.png)
+
+Here is the validation loss:
 ![](validationloss.png)
 
  
