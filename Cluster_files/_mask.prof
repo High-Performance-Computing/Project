@@ -1,0 +1,18 @@
+         124848 function calls (122144 primitive calls) in 3.480 seconds
+
+   Ordered by: cumulative time
+   List reduced from 182 to 10 due to restriction <10>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    3.480    3.480 profile_serial_callback.py:83(_mask)
+     1248    0.003    0.000    3.056    0.002 constant_op.py:166(constant)
+     1248    0.006    0.000    3.053    0.002 constant_op.py:268(_constant_impl)
+     1248    0.003    0.000    3.041    0.002 constant_op.py:299(_constant_eager_impl)
+     1248    3.031    0.002    3.039    0.002 constant_op.py:70(convert_to_eager_tensor)
+ 2132/572    0.007    0.000    0.373    0.001 dispatch.py:198(wrapper)
+      104    0.004    0.000    0.311    0.003 base_layer.py:1799(set_weights)
+      260    0.013    0.000    0.144    0.001 array_ops.py:893(_slice_helper)
+      104    0.004    0.000    0.130    0.001 backend.py:3694(batch_set_value)
+      260    0.006    0.000    0.115    0.000 resource_variable_ops.py:863(assign)
+
+
