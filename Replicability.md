@@ -52,6 +52,21 @@ e tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
 
 The following information is obtained by using on a compute node (follow [How to Run](HowToRun.md) first):
 
+
+```
+sinfo
+```
+and select a node name (node_name). Then, we use:
+
+```
+scontrol show node node_name
+```
+
+
+![](Images/Computenodeinfo.png)
+
+
+In order to be specific about the hardware of one compute node, one could explore the CPU specs and the GPU specs
 ```
 lscpu
 ```
@@ -86,19 +101,6 @@ lscpu
 smep bmi2 erms invpcid cqm xsaveopt cqm_llc cqm_occup_llc dtherm ida arat pln pts md_clear spec_ctrl intel_stibp flush_l1d
 
 
-We can also use:
-```
-sinfo
-```
-and select a node name (node_name). Then, we use:
-
-```
-scontrol show node node_name
-```
-
-
-![](Images/Computenodeinfo.png)
-
 ### GPU
 
 The following information is obtained by using: 
@@ -113,5 +115,10 @@ The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm proc
 
 ## Spark
 
-We used Spark version 3.1.1. Other libraries and dependencies can be found in equirements.txt.
+We used Spark Standalone version. In order to see the installation, please refer to the [How to Run](HowToRun.md) section.
+
+## Python, mpi4py, Pyspark, Apache maven and java version
+
+Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1, Apache maven 3.8.1, java 1.8.0_45
+
 

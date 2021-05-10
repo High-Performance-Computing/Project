@@ -13,22 +13,26 @@
 
 ## Need for Big Data
 
-<p align="justify"> We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at once, and we are only delaing with images). However, one can imagine that lottery tickets found on Imagenet coukd be used on a variety of tasks that use convolutions (computer vision, speech recognition...). </p> 
+<p align="justify"> We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at once, and we are only delaing with images). However, one can imagine that lottery tickets found on ImageNet could be used on a variety of tasks that use convolution operations (computer vision, speech recognition...). </p> 
 
 - **Volume**: 
-     -  1.23M training images
+     -  Total number of training images: 1.23M
+     -  Total number of validation images:100k
+     -  ImageNet Dataset size: 157.3 GB
+     -  Average image resolution (downloaded): 469x387
+     -  Average image resolution (preporcessed): 227x227
 - **Velocity**: Not considered in our project 
 - **Variety**: Not considered in our project
 
-## Numerical complexity
+## Numerical Complexity
 
 The numerical complexity of doing late-resetting and masking is O(MNt). 
 
 - M is the number of thresholds for our masks (each mask gives us one subnetwork)
 - N is the length of the trellis for late resetting  
-- t is the average time to train a network (we actually use sparse subnetworks, so they train faster than the original one).
+- t is the average time to train a network (we actually use sparse subnetworks, so we expect them to train faster than the original one).
 
-### Theoretical Speed up & expected scalability
+### Theoretical Speed-up & Expected Scalability
 
 <p align="justify"> In our case, the numerical complexity of doing late-resetting and masking is O(100t). </p>
 
@@ -49,9 +53,9 @@ Parallel execution Speed-up and Efficiency for a given problem size and a number
 
 In our case S=20 and E=1.
 
-## CPU and GPU training
+## CPU and GPU Training
 
-We use the following link to train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
+We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
 ```
@@ -67,13 +71,13 @@ With 4 GPUs and a batch size of 96:
 
 ![](Images/4GPU.png)
 
-## GPU occupancy
+## GPU Occupancy
 
 <p align="justify">  " A CUDA device's hardware implementation groups adjacent threads within a block into warps. A warp is active from the time its threads begin executing to the time when all threads in the warp have exited from the kernel. Occupancy is the ratio of active warps on an SM to the maximum number of active warps supported by the SM. Occupancy varies over time as warps begin and end, and can be different for each SM. " </p>
 
 Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
 
-### Increasing the GPU occupancy
+### Increasing the GPU Occupancy
 
 ![](Images/GPU1.png)
 
@@ -85,7 +89,7 @@ Finally, we were able to virtually reach 100% GPU occupancy.
 
 ![](Images/GPUf.png)
 
-## Spark for offline processing of the data
+## Spark for Offline Processing of the Data
 
 We reshaped the data as tf tensors before loading it. 
 

@@ -29,8 +29,15 @@ ImageNet Dataset:
 
 ## Programming model and infrastructure
 
+Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1, Apache maven 3.8.1, java 1.8.0_45
+We used Spark-Tensorflow connector and Standalone Spark mode to convert the data from TF Tensors to RDD and process it in an offline manner
+We use SLURM Job Arrays for communication between our nodes and Python Multiprocessing for parallelization within a node 
+Train using TensorFlow 2.0 (leveraging cuda and cudnn) 
+Objective: End solution comprises 20 worker nodes, each one will have 4 GPUs TESLA K80 with 11.5 GB memory and 64 CPUs 
+
+
 - We use FAS RC (take advantage of the SCRATCH space [300+GB] and the ease of allocating several nodes for MPI). 
--Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1
+- Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1
 - We used Spark to download the data [working closely with FAS in order to devise the right SLURM allocations for the different workers to access the GPUs safely]
 
 ![](Images/Spark_solution.gif)
@@ -164,4 +171,6 @@ To do this task we submit the different jobs using a bash file. We have 3538984 
 
 For example, if we choose a threshold of 2.9455150127410867, our mask will mask all the weights whose norm is lower than 2.9455150127410867. Thus we will be left with a network that has only one percent of the original size.
 
-We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the orignial network. 
+We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the originial network. 
+
+## Training 

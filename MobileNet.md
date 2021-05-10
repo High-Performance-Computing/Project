@@ -1,3 +1,7 @@
+# Why MobileNet ? 
+
+<p align="justify"> We need a very deep architecture in order to extract relevant features from te ImageNet dataset and deep enough features that could transfer across different dataset, which is why we need to use a Common Deep architecture. MobileNet allows to benefit from an efficient deep architecture. The model has 3.4 million parameters and 300 million multiply-adds per forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU. </p>
+
 # MobileNet and MobileNetV2 Architectures
 
 ## MobileNet
@@ -64,7 +68,7 @@ non-linearities. The lightly colored block indicates the beginning of the next b
 Source of the images: 
 - <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a>
 
-<p align="justify"> The model has 3.4 million parameters and 300 million multiply-adds per forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU. </p>
+
 
 
 ### MobileNetV3

@@ -67,7 +67,7 @@ The learning transfer is valid for:
 
 <p align="justify"> In order to download and train our Neural Networks, we used Spark Elephas that requires data stored as RDDs. </p>
 
-We train on FAS RC, with 20 compute nodes, using 4 GPUs. 
+We train on FAS RC (to take advantage of the SCRATCH space [300+GB] and because of the ease of allocating several nodes for MPI), with 20 compute nodes, using 4 GPUs. 
 
 ![](Images/Cannon.png)
 
