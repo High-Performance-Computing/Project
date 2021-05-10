@@ -76,15 +76,13 @@ Source:
 
 ![](Images/GPU2.png)
 
-
-## Spark for Offline Processing of the Data
-
-As we introduced earlier, the main overhead remaining in our data pipeline was that we needed to batch the data before applyin gpreprocessing functions. However, using the initial ImageNet, it was impossible due to the inconsitencies in image shapes. Therefore, we leverage Spark in order to perform an offline preprocessing step. We faced some issues witht his approach because the ImageNet data was loaded as TF records: we needed to use a Spark Tensorflow Connector in order to load it as RDDs. https://github.com/tensorflow/ecosystem/tree/master/spark/spark-tensorflow-connector. Using Spark provided significant speed up when comparing to TFDS offline pipelining.
 Finally, we were able to virtually reach 100% GPU occupancy.
 
 ![](Images/GPUf.png)
 
+## Spark for Offline Processing of the Data
 
+We reshaped the data as tf tensors before loading it. 
 
 
 ## Training
@@ -173,7 +171,13 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the originial network. 
 
+# Effective Parallelization of Masking: Distributed Memory Parallel Programming
+
 ## From MPI to SLURM
+
+**Issue: Distributed Memory Parallel Computing Paradigm involves some overheads in the communication between different nodes**
+- Solution: Transform our problem into a SIMD paradigm and use SLURM Job arrays in order to parallelize the work without communication.
+- Setting: We parallelized over 20 workers nodes (two cascades of 10 worker nodes with 4 GPUs)
 
 ![](Images/MPISlurm.png)
 
