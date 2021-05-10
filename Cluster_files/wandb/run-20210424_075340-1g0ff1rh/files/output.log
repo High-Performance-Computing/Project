@@ -1,0 +1,1 @@
+2503/2503 [==============================] - 1546s 617ms/step - loss: 2.8962 - accuracy: 0.4894 - top_k_categorical_accuracy: 0.7285 - val_loss: 3.9282 - val_accuracy: 0.3315 - val_top_k_categorical_accuracy: 0.5679

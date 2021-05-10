@@ -1,0 +1,1 @@
+tensorflow.python.framework.errors_impl.ResourceExhaustedError: saved_models_/saved_MobileNet_27/saved_model.pb.tmpbf6f1307971942a9a45e25dd765d7d4d; No space left on device
