@@ -63,7 +63,7 @@ Synchronization: We structured our architecture in order for different nodes to 
 
 ![](Images/SingleGPUarchitecture.png)
 
-We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
+We use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
 ```
