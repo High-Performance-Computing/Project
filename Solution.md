@@ -33,7 +33,7 @@ ImageNet Dataset:
 -Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1
 - We used Spark to download the data [working closely with FAS in order to devise the right SLURM allocations for the different workers to access the GPUs safely]
 
-![](Spark_solution.gif)
+![](Images/Spark_solution.gif)
 
 - We use MPI for communication between our nodes and Python Multiprocessing for parallelization within a node. We allocate jobs to different nodes and then on every node, we use Spark 
 - Train using TensorFlow 2.0 (leveraging cuda and cudnn) and <a href="https://github.com/maxpumperla/elephas">Elephas</a> (PySpark module) in order to accelerate batch training 
