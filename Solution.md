@@ -30,7 +30,7 @@ TESLA K80 with 11.5 GB memory and 64 CPUs
 - Running on a single CPU: 20hrs/epoch
 - Running on a single Tesla K80 GPU: 3h30/epoch
 - Running on 4 Tesla K80 GPUs: 1h/epoch
-- Identifying the bottleneck: slow data pipeline
+- **Identifying the bottleneck:** slow data pipeline
 
 
 
