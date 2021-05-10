@@ -52,6 +52,21 @@ e tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold
 
 The following information is obtained by using on a compute node (follow [How to Run](HowToRun.md) first):
 
+
+```
+sinfo
+```
+and select a node name (node_name). Then, we use:
+
+```
+scontrol show node node_name
+```
+
+
+![](Images/Computenodeinfo.png)
+
+
+In order to be specific about the hardware of one compute node, one could explore the CPU specs and the GPU specs
 ```
 lscpu
 ```
@@ -85,19 +100,6 @@ lscpu
 - Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer xsave avx f16c rdrand lahf_lm abm epb invpcid_single intel_ppin ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 
 smep bmi2 erms invpcid cqm xsaveopt cqm_llc cqm_occup_llc dtherm ida arat pln pts md_clear spec_ctrl intel_stibp flush_l1d
 
-
-We can also use:
-```
-sinfo
-```
-and select a node name (node_name). Then, we use:
-
-```
-scontrol show node node_name
-```
-
-
-![](Images/Computenodeinfo.png)
 
 ### GPU
 
