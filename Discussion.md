@@ -8,7 +8,7 @@
 - If we scale up our model, nd can't reach 100% GPU occupancy. The solution would be to use Elephas Model and scale up the problem using a Spark Cluster. 
 
 ## Considerations for the LTH
-- It would be interesting to check the range of transfer learning performances of our winning ticket: does it work better than another simple Transfer Learning setting ? For instance, what would happen if we use it on the CelebA dataset ? 
+- It would be interesting to check the range of transfer learning performances of our winning ticket: does it work better than another simple Transfer Learning setting ? For instance, what would happen if we use it on the <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA dataset </a> ? 
 
 
 
