@@ -101,6 +101,28 @@ We used 20 nodes with 4 GPUs per node on FAS RC.
 - For every masked network, retrain from every selected epoch (on a single node) in another loop
  
 These two "for" loops are where the parallelization occurs.
+
+## Initial training
+
+### Training loss, validation loss, accuracy
+
+
+Here is the training loss:
+![](TrainingLoss.png)
+
+Here is the validation loss:
+![](Validationloss.png)
+
+Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 5 highest probability answers match with the expected answer.
+
+![](top5accuracysweep.png)
+
+![](top5accuracyCNN.png)
+
+![](ReportCNN.png)
+
+Those figures were obtained using wandb.
+
  
 #### Weights exploration
  
@@ -145,12 +167,6 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the orignial network. 
 
 
-## To sort
-
-![](top5accuracysweep.png)
-![](top5accuracyCNN.png)
-![](trainingloss.png)
-![](validationloss.png)
 
 
 
