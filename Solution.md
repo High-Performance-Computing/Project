@@ -177,4 +177,4 @@ We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ....,
 
 ## Within node code optimization
 
-![](SIngleProcessvsMultiprocessing.png)
+![](Images/SingleProcessvsMultiprocessing.png)
