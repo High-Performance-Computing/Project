@@ -1,5 +1,9 @@
 # Solution
 
+We first present an overview of the challenges we faced. We then go into details about parallelizating the training of a CNN in section 2 and about parallelizing the masking procedure in section 3.
+
+# Overview
+
 ## Profiling and training MobilenetV2
 
 
