@@ -1,21 +1,29 @@
 # Solution
 
+We first present an overview of the challenges we faced. We then go into details about parallelizating the training of a CNN in section 2 and about parallelizing the masking procedure in section 4.
+
+# Overview
+
+## Programming model and infrastructure
+
+- Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1, Apache maven 3.8.1, java 1.8.0_45
+- We used Spark-Tensorflow connector and Standalone Spark mode to convert the
+data from TF Tensors to RDD and process it in an offline manner
+- We use SLURM Job Arrays for communication between our nodes and Python
+Multiprocessing for parallelization within a node
+- rain using TensorFlow 2.0 (leveraging cuda and cudnn)
+- **Objective:** End solution comprises 20 worker nodes, each one will have 4 GPUs
+TESLA K80 with 11.5 GB memory and 64 CPUs
+ 
+
 ## Profiling and training MobilenetV2
 
-
-<p align="justify"> Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overheads between CPU and GPU. </p> 
-
-<p align="justify"> However, at this point the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low. </p>
-
-<p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect up to x2 speed-up by further augmenting GPU occupation. </p>
-
-### Summary
+### Summary: after the project design presentation
 
 - Running on a single CPU: 20hrs/epoch
 - Running on a single Tesla K80 GPU: 3h30/epoch
 - Running on 4 Tesla K80 GPUs: 1h/epoch
-- Identifying the bottleneck: slow data pipeline
-
+- **Identifying the bottleneck:** slow data pipeline
 
 
 ## Main Overheads
@@ -34,36 +42,54 @@
 ![](Images/Vectorized.png)
 
 ![](Images/Vectorized.png)
- 
-After parallelization of the data pipeline, down to 15 mins/epoch 
-
-Next step to reach 100% GPU occupation: Offline processing of the data using Spark
 
 Synchronization: We structured our architecture in order for different nodes to be independent
 
+# Effective Parallelization of the Training of a CNN
+
 ## CPU and GPU Training
+
+First, using the following architecture:
 
 ![](Images/SingleGPUarchitecture.png)
 
-We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
-```
-tf.distribute.Strategy
-```
-is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
+we learn hyperparameters and their influence on the training time:
+- Batch size : arbitrary
+- Learning Rate : arbitrary
+- Number of Epochs : 100
 
 ![](Images/CPU.png)
+
+We see that:
+- 1 epoch = 20 hours
+- 1 model = 100 epochs = 2000 hours
+- 100 models = 200000 hours = ~8000 days
 
 We bring down the time with GPUs:
 
 ![](Images/GPU.png)
 
+- 1 epoch = 4 hours
+- 1 model = 100 epochs = 400 hours
+- 100 models = 40000 hours = ~1650 days
+
+We then use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
+```
+tf.distribute.Strategy
+```
+is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
+
 We bring down the time further with 4 GPUs and a batch size of 96:
 
 ![](Images/4GPU.png)
 
+- 1 epoch = 1 hour
+- 1 model = 100 epochs = 100 hours
+- 100 models = 10000 hours = ~400 days
+
 ## GPU Occupancy
 
-<p align="justify">  " A CUDA device's hardware implementation groups adjacent threads within a block into warps. A warp is active from the time its threads begin executing to the time when all threads in the warp have exited from the kernel. Occupancy is the ratio of active warps on an SM to the maximum number of active warps supported by the SM. Occupancy varies over time as warps begin and end, and can be different for each SM. " </p>
+<p align="justify">  Let us start by defining GPU occupancy. Nvidia have agreat definition on their website: "A CUDA device's hardware implementation groups adjacent threads within a block into warps. A warp is active from the time its threads begin executing to the time when all threads in the warp have exited from the kernel. Occupancy is the ratio of active warps on an SM to the maximum number of active warps supported by the SM". </p>
 
 Source: 
 - https://docs.nvidia.com/gameworks/content/developertools/desktop/analysis/report/cudaexperiments/kernellevel/achievedoccupancy.htm
@@ -72,20 +98,60 @@ Source:
 
 ![](Images/GPU1.png)
 
-<p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. Need to do some preprocessing here.After resolving the preprocessing issues, we manageed to increase the GPU occupancy: </p>
+#### First step: accelerating the data pipeline
+
+<p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. 
+ 
+- Issue: we can’t batch ImageNet because of non uniform shapes of Images
+- Solution: offline preprocessing Step, using either TFDS pipeline or Spark
+- Problems using Spark: the data is loaded as TF Records and not as .PNG files
+- Solution: Use a Spark Tensorflow Connector in order to load the TF Records as Spark
+DataFrames (requires using maven)
+- Using Spark pipelining: process 1024 images in 12 seconds
+- Using TFDS pipelining: process 1024 images in 38 seconds
+- Effective Data processing Speed up using spark: ~3 x
+ 
+ After resolving the preprocessing issues, we managed to increase the GPU occupancy: </p>
+
+**Changes:**
+- Parallelizing the preprocessing operations in the data pipeline (dynamic allocation of #workers)
+- Caching and Prefetching the data in order to reduce the data transfers between CPU & GPU
+
+
+#### Results 
+- Batch size : 512 (objective: saturate the GPU memory at every data bus)
+- Learning Rate : arbitrary
+- Number of Epochs : 100
 
 ![](Images/GPU2.png)
+
+Now:
+
+![](Images/GPUtime2.png)
+
+- 1 epoch = 23 minutes
+- 1 model = 100 epochs = ~38 hours
+- 100 models = ~150 days
+- Can we reach ~100% GPU occupation ?
+
+
+![](Images/Vectorized.png)
+
+![](Images/Vectorized.png)
+
 
 Finally, we were able to virtually reach 100% GPU occupancy.
 
 ![](Images/GPUf.png)
 
-## Spark for Offline Processing of the Data
+**Final results:**
+- 1 epoch = 11 minutes
+- 1 model = 100 epochs = ~18 hours
+- 100 models = ~75 days
+- Effective Speed-up from Single CPU: ~x100
 
-We reshaped the data as tf tensors before loading it. 
 
-
-## Training
+# Training
 
 - We save the weights at initialization. 
 - We save the weights at the final step of training.
@@ -103,7 +169,7 @@ These two "for" loops are where the parallelization occurs.
 
 ### Training loss, validation loss, accuracy
 
-<p align="justify"> Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps. https://docs.wandb.ai/guides/sweeps. </p>
+<p align="justify"> Once we have been able to effectively parallelize our training accross 4 different GPUs, we were able to launch the initial training of the CNN. In order to get the best results possible, we used Hyper Parameter tuning launching different runs to different runs through SlURM arrays. The hyperparameter configuration was optimized using Bayesian Optimization using Weights & Biases sweeps (see https://docs.wandb.ai/guides/sweeps). </p>
 
 Here are our training losses across different hyperparameter configurations:
 
@@ -171,11 +237,29 @@ For example, if we choose a threshold of 2.9455150127410867, our mask will mask 
 
 We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ...., 99 quantiles. Those are saved in different files on the FAS cluster. The motivation is to have subnetworks that are much smaller than the originial network. 
 
+# Effective Parallelization of Masking: Distributed Memory Parallel Programming
+
 ## From MPI to SLURM
+
+**Issue: Distributed Memory Parallel Computing Paradigm involves some overheads in the communication between different nodes**
+- Solution: Transform our problem into a SIMD paradigm and use SLURM Job arrays in order to parallelize the work without communication.
+- Setting: We parallelized over 20 workers nodes (two cascades of 10 worker nodes with 4 GPUs)
 
 ![](Images/MPISlurm.png)
 
 ##  Single Process vs Multiprocessing
+
+**Pruning the MobileNet architecture using Tensorflow**
+
+- Issue: pruning weights using a mask in tensorflow damages the computational graph
+- Solution: zeroing the weights using a mask on each batch using tf.callbacks
+
+**Code Profiling**
+- Results from code profiling
+    - Tf.callbacks: 3.3457s
+    - Total batch time (including tf.callbacks): 3.5970s
+    - Tf.callbacks: ~93% of batch runtime
+-  Issue: the influence of tf.callbacks on the training time
 
 ![](Images/SIngleProcessvsMultiprocessing.png)
 
