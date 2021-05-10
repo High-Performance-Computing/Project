@@ -4,6 +4,18 @@ We first present an overview of the challenges we faced. We then go into details
 
 # Overview
 
+## Programming model and infrastructure
+
+- Python 3.8.5, mpi4py 3.0.3, pyspark 3.1.1, Apache maven 3.8.1, java 1.8.0_45
+- We used Spark-Tensorflow connector and Standalone Spark mode to convert the
+data from TF Tensors to RDD and process it in an offline manner
+- We use SLURM Job Arrays for communication between our nodes and Python
+Multiprocessing for parallelization within a node
+- rain using TensorFlow 2.0 (leveraging cuda and cudnn)
+- **Objective:** End solution comprises 20 worker nodes, each one will have 4 GPUs
+TESLA K80 with 11.5 GB memory and 64 CPUs
+ 
+
 ## Profiling and training MobilenetV2
 
 
