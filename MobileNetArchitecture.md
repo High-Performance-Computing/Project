@@ -10,7 +10,7 @@
 
 <p align="justify">  First, here is an image for a standard convolution. </p>
 
-![](RegularConvolution.png)
+![](Images/RegularConvolution.png)
 
 
 <p align="justify"> In a regular convolution, we apply a filter a D<sub>K</sub> by D<sub>K</sub> by M filter. So we look for relationships within each channel (D<sub>K</sub> by D<sub>K</sub>) and between channels. </p>
@@ -18,7 +18,7 @@
 <p align="justify"> The goal of depthwise seprable convolutions is to break down this process into two parts: first, we look for relationships within each channel, and then between different channels. This is illustrated below in figures b) and c). We first take D<sub>K</sub> by D<sub>K</sub> filters and apply them one each to a channel. We thus have M such filers, called depthwise convolutions. In image c), we can see the pointwise convolutions: those are 1 by 1 by M convolutions. </p>
 
 
-![](Mobilenet.png)
+![](Images/Mobilenet.png)
 
 <p align="justify"> The cost of a regular convolution is  D<sub>K</sub>  D<sub>K</sub> M. If we do N such convolutions, the cost is D<sub>K</sub>  D<sub>K</sub> M N. Finally, if we apply this to our block of size D<sub>F</sub> by   D<sub>F</sub>, with stride one, we get a cost of D<sub>K</sub>  D<sub>K</sub> M N  D<sub>F</sub>  D<sub>F</sub>. </p>
 
@@ -34,11 +34,11 @@ Here is a nice vizualisation of the difference between classical convolutions an
 
 **Standard convolution:**
 
-![](StandardConv.png)
+![](Images/StandardConv.png)
 
 **Depthwise Convolution and Pointwise Convolution:**
 
-![](DepthandPoint.png)
+![](Images/DepthandPoint.png)
 
 Source of the images: 
 - https://machinethink.net/blog/googles-mobile-net-architecture-on-iphone/
@@ -50,16 +50,16 @@ Source of the images:
 
 Here is the illustrations for standard convolutions and depthwise separable convolutions used in the paper:
 
-![](Regular_Convolution.png)
+![](Images/Regular_Convolution.png)
 
-![](Separable_Convolution.png)
+![](Images/Separable_Convolution.png)
 
 <p align="justify"> The concepts of bottleneck convolutions and expansion convolutions are illustrated below. The diagonally hatched block do not contain
 non-linearities. The lightly colored block indicates the beginning of the next block. </p>
 
-![](BottleNeckConvolution.png)
+![](Images/BottleNeckConvolution.png)
 
-![](ExpansionConvolutionBlock.png)
+![](Images/ExpansionConvolutionBlock.png)
 
 Source of the images: 
 - <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a>
