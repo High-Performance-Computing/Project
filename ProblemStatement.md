@@ -55,7 +55,7 @@ In our case S=20 and E=1.
 
 ## CPU and GPU Training
 
-We use the following link to train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
+We use the following link a resource to set up the train on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
 ```
