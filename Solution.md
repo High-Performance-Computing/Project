@@ -197,6 +197,12 @@ Conclusion: MP not a suitable solution for problem
 
 ## Within node code optimization
 
+Optimizing the tf.callbacks on a single process:
+
 ![](Images/Codeprofiling.png)
+
+- Issue: convert_to_eager_tensor ~90%
+- Solution: convert_to_eager_tensor of mask outside the tf.callbacks
+- Result: reduced tf.callbacks runtime by ~50%
 
 ![](Images/Codeprofiling2.png)
