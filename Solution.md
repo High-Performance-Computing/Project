@@ -10,9 +10,9 @@
 
 **Two Nested For Loops to Find the Lottery Ticket Hypothesis**
 - Outer for loop: iterate over different masks (pruning thresholds)
-- Inner for loop: iterate over the range of latte resetting epochs
-Train a sparse MobileNetV2 CNN per each inner loop iteration
-Solution: MPI Distributed Computing (20 worker nodes)
+- Inner for loop: iterate over the range of late resetting epochs
+- Train a sparse MobileNetV2 CNN per each inner loop iteration
+- **Solution**: SLURM: Distributed Computing (20 worker nodes)
 
 ## Type of application: Big Data
 
