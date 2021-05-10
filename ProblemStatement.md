@@ -1,5 +1,16 @@
 # Problem
 
+## Need for Big Compute
+
+**MobileNetV2 Architecture**: 
+- Total number of parameters: 3.4M 
+- Number of multiply-adds (MAdds) per forward pass: 300M
+
+**Two Nested For Loops to Find the Lottery Ticket Hypothesis**
+- Outer for loop: iterate over different masks (pruning thresholds)
+- Inner for loop: iterate over the range of late resetting epochs
+- Train a sparse MobileNetV2 CNN per each inner loop iteration
+
 ## Need for Big Data
 
 <p align="justify"> We are dealing with a Big Data problem because of the size of our dataset. We do not consider Velocity or Variety (we have all of our data available at once, and we are only delaing with images). However, one can imagine that lottery tickets found on Imagenet coukd be used on a variety of tasks that use convolutions (computer vision, speech recognition...). </p> 
@@ -30,11 +41,11 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 
 <p align="justify"> We use 20 worker nodes. Each worker needs to do several late resetting for the particular structure found after masking. Afterwards, there is no communication between the worker nodes. The communication time at the beginning is negligible compared to training time. The computation time per epoch is 4.5 minutes at best. We have 350 epochs, and perform 5 late resetting. Thus we achieve a run time of 131 h 15 min at best per worker node. This corresponds to a speed up of 20. </p> 
 
-#### Amdahl Law (1967)
+### Amdahl Law (1967)
 
 Parallel execution Speed-up and Efficiency for a given problem size and a number of processors are given by:
 
-![](~/Project/Images/Eqns.png)
+![](Images/Eqns.png)
 
 In our case S=20 and E=1.
 
