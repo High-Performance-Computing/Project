@@ -57,7 +57,7 @@ pyspark
 ```
 The output should look like this:
 
-![](Spark.png)
+![](Images/Spark.png)
 
 ### Install Spark-Tensorflow Connector
 
@@ -96,7 +96,7 @@ mvn -version
 ```
 Your output should be:
 
-![](Outpushouldbe.png)
+![](Images/Outpushouldbe.png)
 
 Last, in order to run the Spark offline preprocessing step, you should increase the size of your heap size and java heap size:
 
@@ -110,7 +110,7 @@ java -XshowSettings:vm
 ```
 Your output should look like:
 
-![](Output2look.PNG)
+![](Images/Output2look.PNG)
 
 
 ## Download Imagenet
@@ -141,7 +141,7 @@ In order to check that the work if effectively being parallelized across the 4 G
 squeue -u $USER
 ```
 
-![](JobID.png)
+![](Images/JobID.png)
 
 
 ```
@@ -151,7 +151,7 @@ nvidia-smi -l 1 (dynamic visualization of the occupation of the 4 GPUs)
 
 The output should look like:
 
-![](Outputrun.png)
+![](Images/Outputrun.png)
 
 <p align="justify">  This output shows that the parallelization is successful, our bottleneck for the in the data pipeline with the CPU feeding the GPU has been resolved (we have now 90% util capacity of every 4 GPUs) and we are allocating the memory of the GPU in the right way since with every bus its memory its nearly saturated (we need to use batch size of $2^k$ so switching to the next batch size produces OOM error).  </p>
 
