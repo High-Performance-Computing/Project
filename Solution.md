@@ -45,6 +45,8 @@ Next step to reach 100% GPU occupation: Offline processing of the data using Spa
 
 Synchronization: We structured our architecture in order for different nodes to be independent
 
+# Effective Parallelization of the Training of a CNN
+
 ## CPU and GPU Training
 
 ![](Images/SingleGPUarchitecture.png)
