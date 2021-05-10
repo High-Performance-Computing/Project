@@ -20,7 +20,7 @@
      -  Total number of validation images:100k
      -  ImageNet Dataset size: 157.3 GB
      -  Average image resolution (downloaded): 469x387
-     -  Average image resolution (preporcessed): 227x227
+     -  Average image resolution (preprocessed): 227x227
 - **Velocity**: Not considered in our project 
 - **Variety**: Not considered in our project
 
