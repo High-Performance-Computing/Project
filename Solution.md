@@ -184,12 +184,12 @@ Optimizing the tf.callbacks
     - Tf.callbacks on a single process: 3.3457s 
 - Multiprocessing  
     - Tf.callbacks on 64 processes: 63.3417s
-    - 
+ 
 Why is multiprocessing (MP) slowing down our code?
 - Computation time increase with # processes
 - Calling os.fork() at least 64 times!
      - Creating a child process expensive (overhead)
-     - # trainable layers 155: ~ 3 tasks per process
+     - the number of trainable layers 155: ~ 3 tasks per process
      - Tasks simple: matrix multiplication
      - Overheads MP >> benefits MP
 
