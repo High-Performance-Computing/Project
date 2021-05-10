@@ -81,11 +81,11 @@ We leveraged GPU for tensorflow. We used Spark and GPU Acceleration.
 <p align="justify"> For a complete list of instructions on how to use the programs found in this repository, please see ![How To Run](HowToRun.md). </p>
 
 ## Table of Contents
-1. [Problem Statement](Markdown_files/ProblemStatement.md)
-2. [Imagenet](Markdown_files/Imagenet.md)
-3. [MobileNet](Markdown_files/MobileNetArchitecture.md)
-4. [Solution](Markdown_files/Solution.md)
-5. [Transfer Learning](Markdown_files/TransferLearning.md)
-6. [Discussion](Markdown_files/Discussion.md)
-7. [How To Run](Markdown_files/HowToRun.md)
-8. [Replicability](Markdown_files/Replicability.md)
+1. [Problem Statement](ProblemStatement.md)
+2. [Imagenet](Imagenet.md)
+3. [MobileNet](MobileNetArchitecture.md)
+4. [Solution](Solution.md)
+5. [Transfer Learning](TransferLearning.md)
+6. [Discussion](Discussion.md)
+7. [How To Run](HowToRun.md)
+8. [Replicability](Replicability.md)
