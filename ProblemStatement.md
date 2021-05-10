@@ -34,7 +34,7 @@ The numerical complexity of doing late-resetting and masking is O(MNt).
 
 Parallel execution Speed-up and Efficiency for a given problem size and a number of processors are given by:
 
-![](Eqns.png)
+![](Images/Eqns.png)
 
 In our case S=20 and E=1.
 
@@ -46,15 +46,15 @@ tf.distribute.Strategy
 ```
 is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
 
-![](CPU.png)
+![](Images/CPU.png)
 
 We bring down the time with GPUs:
 
-![](GPU.png)
+![](Images/GPU.png)
 
 With 4 GPUs and a batch size of 96:
 
-![](4GPU.png)
+![](Images/4GPU.png)
 
 ## GPU occupancy
 
@@ -64,11 +64,11 @@ Source: https://docs.nvidia.com/gameworks/content/developertools/desktop/analysi
 
 ### Increasing the GPU occupancy
 
-![](GPU1.png)
+![](Images/GPU1.png)
 
 <p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. Need to do some preprocessing here.After resolving the preprocessing issues, we manageed to increase the GPU occupancy: </p>
 
-![](GPU2.png)
+![](Images/GPU2.png)
 
 Finally, we were able to reach 100% GPU occupancy.
 
