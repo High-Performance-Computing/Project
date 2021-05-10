@@ -118,6 +118,8 @@ Source:
 - Parallelizing the preprocessing operations in the data pipeline (dynamic allocation of #workers)
 - Caching and Prefetching the data in order to reduce the data transfers between CPU & GPU
 
+
+#### Results 
 - Batch size : 512 (objective: saturate the GPU memory at every data bus)
 - Learning Rate : arbitrary
 - Number of Epochs : 100
