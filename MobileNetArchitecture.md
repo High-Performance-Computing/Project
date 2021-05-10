@@ -64,6 +64,9 @@ non-linearities. The lightly colored block indicates the beginning of the next b
 Source of the images: 
 - <a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks</a>
 
+<p align="justify"> The model has 3.4 million parameters and 300 million multiply-adds per forward pass. As a comparison, another popular CNN architecture, AlexNet has 60 million parameters. Although lighter than most state of art CNN architectures, it is practically infeasible to train the MobileNet on a single CPU. </p>
+
+
 ### MobileNetV3
 
 Note that there are even more recent models by Google (for instance <a href="https://arxiv.org/abs/1905.02244">Searching for MobileNetV3</a> by Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam).
