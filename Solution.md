@@ -77,6 +77,14 @@ We see that:
 - 1 model = 100 epochs = 2000 hours
 - 100 models = 200000 hours = ~8000 days
 
+We bring down the time with GPUs:
+
+![](Images/GPU.png)
+
+- 1 epoch = 4 hours
+- 1 model = 100 epochs = 400 hours
+- 100 models = 40000 hours = ~1650 days
+
 We then use the following link a resource to set up the training on multiple GPUs: https://towardsdatascience.com/train-a-neural-network-on-multi-gpu-with-tensorflow-42fa5f51b8af. 
 ```
 tf.distribute.Strategy
@@ -84,10 +92,6 @@ tf.distribute.Strategy
 is a TensorFlow API to distribute training across multiple GPU. We use the mirrored stratedy which send splits the batches and sends them to the four different GPUs.
 
 
-
-We bring down the time with GPUs:
-
-![](Images/GPU.png)
 
 We bring down the time further with 4 GPUs and a batch size of 96:
 
