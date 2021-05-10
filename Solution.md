@@ -179,6 +179,22 @@ We wanted to use 20 worker nodes. Thus we kept the 60, 65, 70, 75, 80, 85, ....,
 
 ![](Images/SIngleProcessvsMultiprocessing.png)
 
+Optimizing the tf.callbacks 
+- Single Process
+    - Tf.callbacks on a single process: 3.3457s 
+- Multiprocessing  
+    - Tf.callbacks on 64 processes: 63.3417s
+    - 
+Why is multiprocessing (MP) slowing down our code?
+- Computation time increase with # processes
+- Calling os.fork() at least 64 times!
+     - Creating a child process expensive (overhead)
+     - # trainable layers 155: ~ 3 tasks per process
+     - Tasks simple: matrix multiplication
+     - Overheads MP >> benefits MP
+
+Conclusion: MP not a suitable solution for problem
+
 ## Within node code optimization
 
 ![](Images/Codeprofiling.png)
