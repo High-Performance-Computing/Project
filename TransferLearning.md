@@ -1,5 +1,7 @@
 # Transfer Learning
 
+<p align="justify"> For the winning tickets to be effective, we need them to contain generic inductive biases. When we train and prune a neural network to get a winning ticket, it is not only for the specific dataset we are dealing with, but we do it broadly to get one winning ticket working for different datasets to avoid training and pruning our neural network everytime we change the settings of our problem. The bigger the dataset the more general the winning ticket we find. </p>
+
 We used the ticket found on Imagenet and used it on  <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIPHAR-100</a>.
 
 ## CIFAR-100
