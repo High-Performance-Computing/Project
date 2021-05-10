@@ -127,7 +127,7 @@ Here is the Top-5 accuracy (sweep). Top-5 accuracy means any of our model's top 
 Those figures were obtained using wandb.
 
  
-#### Weights exploration
+### Weights exploration
 
 <p align="justify"> Once the initial training was done, we needed to select different thresholds to apply on the weights in order to perform the masking step of IMP. In order to do that, we had to explore the different weights of the model and decide based on the weights percentiles. </p>
 
