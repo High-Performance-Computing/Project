@@ -32,4 +32,5 @@ We used the ticket found on Imagenet and used it on  <a href="https://www.cs.tor
 
 ## Transfer Learning Results
 
-<p align="justify"> After running our model we get a top 5 accuracy of 81% and 72% for the top 1 accuracy. In comparison, in the paper <a href="https://www.researchgate.net/publication/320796791_Towards_Effective_Low-bitwidth_Convolutional_Neural_Networks">Towards Eﬀective Low-bitwidth Convolutional Neural Networks</a> by Bohan Zhuang, Chunhua Shen, Mingkui Tan, Lingqiao Liu, Ian Reid, we can see that AlexNet developped yields respectively 88% and 65% for top 5 accuracy and top 1 accuracy.  </p>
+<p align="justify"> After running our model we get a top 5 accuracy of 81% and 72% for the top 1 accuracy. In comparison, in the paper <a href="https://www.researchgate.net/publication/320796791_Towards_Effective_Low-bitwidth_Convolutional_Neural_Networks">Towards Eﬀective Low-bitwidth Convolutional Neural Networks</a> by Bohan Zhuang, Chunhua Shen, Mingkui Tan, Lingqiao Liu, Ian Reid, we can see that AlexNet developped yields respectively 88% and 65% for top 5 accuracy and top 1 accuracy.  
+Last, whn we retrain from scratch MobileNetV2 on the CIFAR 100 dataset for 5 epochs, we get a Top 5 accuracy 0.41 and top 1 accuracy 0.23. </p>
