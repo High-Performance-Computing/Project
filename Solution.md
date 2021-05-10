@@ -13,7 +13,7 @@ We first present an overview of the challenges we faced. We then go into details
 
 <p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect up to x2 speed-up by further augmenting GPU occupation. </p>
 
-### Summary
+### Summary: after the project design presentation
 
 - Running on a single CPU: 20hrs/epoch
 - Running on a single Tesla K80 GPU: 3h30/epoch
