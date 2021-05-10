@@ -18,20 +18,12 @@ TESLA K80 with 11.5 GB memory and 64 CPUs
 
 ## Profiling and training MobilenetV2
 
-
-<p align="justify"> Empirically, for a batch size of 96,  we went down 20h per epoch on a single CPU, to  3h30 per epoch using one GPU, to 1h per epoch using 4 GPUs. The theoretical speed up of passing from one to four GPUs is 4, but the effective speed-up was 3.5 due to communication overheads between CPU and GPU. </p> 
-
-<p align="justify"> However, at this point the preprocessing of our data meant the GPUs could not access the data efficiently so the GPU occupation was low. </p>
-
-<p align="justify"> We went down to 15 min per epoch by preprocessing the data (GPU occupation: 50%). We could expect up to x2 speed-up by further augmenting GPU occupation. </p>
-
 ### Summary: after the project design presentation
 
 - Running on a single CPU: 20hrs/epoch
 - Running on a single Tesla K80 GPU: 3h30/epoch
 - Running on 4 Tesla K80 GPUs: 1h/epoch
 - **Identifying the bottleneck:** slow data pipeline
-
 
 
 ## Main Overheads
@@ -50,10 +42,6 @@ TESLA K80 with 11.5 GB memory and 64 CPUs
 ![](Images/Vectorized.png)
 
 ![](Images/Vectorized.png)
- 
-After parallelization of the data pipeline, down to 15 mins/epoch 
-
-Next step to reach 100% GPU occupation: Offline processing of the data using Spark
 
 Synchronization: We structured our architecture in order for different nodes to be independent
 
@@ -112,7 +100,18 @@ Source:
 
 #### First step: accelerating the data pipeline
 
-<p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. After resolving the preprocessing issues, we manageed to increase the GPU occupancy: </p>
+<p align="justify">  We see that initially, the GPU occupancy is 0%. At this stage, the bottleneck of our architecture was the preprocessing, which prevented our GPUs from efficiently accessing the data. Besides, we couldn't do the batching before the mapping because of the inconsistencies of size in ImageNet. The first step we took to adress this issue was to transform the data to shapes of (64, 64). With image sizes of (64, 64), one epoch runs for 15 mins while for shapes of (224, 224) one epoch took 1h. 
+ 
+Issue: we can’t batch ImageNet because of non uniform shapes of Images
+- Solution: offline preprocessing Step, using either TFDS pipeline or Spark
+- Problems using Spark: the data is loaded as TF Records and not as .PNG files
+- Solution: Use a Spark Tensorflow Connector in order to load the TF Records as Spark
+DataFrames (requires using maven)
+- Using Spark pipelining: process 1024 images in 12 seconds
+- Using TFDS pipelining: process 1024 images in 38 seconds
+- Effective Data processing Speed up using spark: ~3 x
+ 
+ After resolving the preprocessing issues, we manageed to increase the GPU occupancy: </p>
 
 **Changes:**
 - Parallelizing the preprocessing operations in the data pipeline (dynamic allocation of #workers)
@@ -136,15 +135,10 @@ Now:
 - Can we reach ~100% GPU occupation ?
 
 
+![](Images/Vectorized.png)
 
-Issue: we can’t batch ImageNet because of non uniform shapes of Images
-- Solution: offline preprocessing Step, using either TFDS pipeline or Spark
-- Problems using Spark: the data is loaded as TF Records and not as .PNG files
-- Solution: Use a Spark Tensorflow Connector in order to load the TF Records as Spark
-DataFrames (requires using maven)
-- Using Spark pipelining: process 1024 images in 12 seconds
-- Using TFDS pipelining: process 1024 images in 38 seconds
-- Effective Data processing Speed up using spark: ~3 x
+![](Images/Vectorized.png)
+
 
 Finally, we were able to virtually reach 100% GPU occupancy.
 
