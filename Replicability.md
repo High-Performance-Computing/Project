@@ -115,5 +115,5 @@ The Tesla K80 is a professional graphics card by NVIDIA. Built on the 28 nm proc
 
 ## Spark
 
-We used Spark version 3.1.1. Other libraries and dependencies can be found in equirements.txt.
+We used Spark Standalone version. In order to see the installation, please refer to the [How to Run](HowToRun.md) section.
 
