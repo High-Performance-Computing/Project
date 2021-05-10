@@ -82,7 +82,7 @@ Finally, we were able to virtually reach 100% GPU occupancy.
 
 ## Spark for Offline Processing of the Data
 
-We reshaped the data as tf tensors before loading it. 
+As we introduced earlier, the main overhead remaining in our data pipeline was that we needed to batch the data before applyin gpreprocessing functions. However, using the initial ImageNet, it was impossible due to the inconsitencies in image shapes. Therefore, we leverage Spark in order to perform an offline preprocessing step. We faced some issues witht his approach because the ImageNet data was loaded as TF records: we needed to use a Spark Tensorflow Connector in order to load it as RDDs. https://github.com/tensorflow/ecosystem/tree/master/spark/spark-tensorflow-connector. Using Spark provided significant speed up when comparing to TFDS offline pipelining.
 
 
 ## Training
